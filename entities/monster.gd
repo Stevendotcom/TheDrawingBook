@@ -17,19 +17,19 @@ var delay: float = 10.0
 var is_dragging: bool = false #state management
 var mouse_offset: Vector2 = Vector2() #center mouse on click
 
-func _ready():
+func _ready() -> void:
 	if sprite.texture:
 		sprite_size = sprite.texture.get_size() * sprite.scale
 	else:
 		print("Error: The sprite doesn't have a texture assigned")
 
-func _process(delta):
+func _process(delta) -> void:
 	move(delta)
 	drag(delta)
 
 
 #Random movement
-func move(delta):
+func move(delta) -> void:
 	if is_moving:
 		move_to_target(delta)
 	else:
@@ -37,7 +37,7 @@ func move(delta):
 		if time_waited >= time_to_move:
 			generate_random_position()
 
-func generate_random_position():
+func generate_random_position() -> void:
 	position_target = Vector2(
 		randf_range(sprite_size.x / 2 + tolerance, get_viewport().size.x - sprite_size.x / 2 - tolerance),
 		randf_range(sprite_size.y / 2 + tolerance, get_viewport().size.y - sprite_size.y / 2 - tolerance)
@@ -46,7 +46,7 @@ func generate_random_position():
 	is_moving = true
 	time_waited = 0.0
 
-func move_to_target(delta):
+func move_to_target(delta) -> void:
 	var direction = (position_target - position).normalized()
 	position += direction * speed * delta
 
@@ -57,7 +57,7 @@ func move_to_target(delta):
 
 
 #Drag and Drop
-func _input(event):
+func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT: 
 		if event.pressed: #User Left Clicks
 			var local_mouse_pos = to_local(event.position) #Save mouse position
@@ -67,7 +67,7 @@ func _input(event):
 		else:
 			is_dragging = false
 
-func drag(delta):
+func drag(delta) -> void:
 	if is_dragging == true:
 		var tween = get_tree().create_tween() #Generate tween for animation
 		tween.tween_property(self, "position", get_global_mouse_position()-mouse_offset, delay * delta) #Set animation properties
