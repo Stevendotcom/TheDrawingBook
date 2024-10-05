@@ -2,10 +2,14 @@
 extends Area2D
 @onready var sprite = $MonsterSprite
 
+#Stats
+@export var level: int = 0
+
+
 #Random movement
-var speed: int = 300
-var time_to_move: float = 3.0
-var tolerance: float = 10.0
+@export var speed: int = 300
+@export var time_to_move: float = 3.0
+@export var tolerance: float = 10.0
 
 var position_target: Vector2 = Vector2()
 var sprite_size: Vector2 = Vector2()
