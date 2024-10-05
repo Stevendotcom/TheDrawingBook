@@ -12,15 +12,20 @@ var tolerance = 10.0
 var is_moving = false
 var sprite_size = Vector2()
 
+#Drag and drop
+var is_dragging = false #state management
+var mouse_offset #center mouse on click
+var delay = 10.0
+
 func _ready():
 	if sprite.texture:
 		sprite_size = sprite.texture.get_size() * sprite.scale
 	else:
 		print("Error: El sprite no tiene una textura asignada.")
 
-
 func _process(delta):
 	move(delta)
+	drag(delta)
 
 
 #Random movement
@@ -48,3 +53,24 @@ func move_to_target(delta):
 	if position.distance_to(position_target) <= tolerance:
 		is_moving = false
 		print("Position reached")
+
+
+
+#Drag and Drop
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT: 
+		if event.pressed: #User Left Clicks
+			var local_mouse_pos = to_local(event.position) #Save mouse position
+			if sprite.get_rect().has_point(local_mouse_pos): #The click is on the monster
+				is_dragging = true
+				mouse_offset = get_global_mouse_position()-global_position
+		else:
+			is_dragging = false
+
+func drag(delta):
+	if is_dragging == true:
+		var tween = get_tree().create_tween() #Generate tween for animation
+		tween.tween_property(self, "position", get_global_mouse_position()-mouse_offset, delay * delta) #Set animation properties
+		#Stop random movement
+		is_moving = false
+		time_waited = 0.0
