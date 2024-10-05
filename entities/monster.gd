@@ -4,24 +4,25 @@ extends Area2D
 @onready var sprite = $MonsterSprite
 
 #Random movement
-var speed = 300
+static var speed = 300
+static var time_to_move = 3.0
+static var tolerance = 10.0
+
 var position_target = Vector2()
-var time_to_move = 3.0
 var time_waited = 0.0
-var tolerance = 10.0
 var is_moving = false
 var sprite_size = Vector2()
 
 #Drag and drop
+static var delay = 10.0
 var is_dragging = false #state management
 var mouse_offset #center mouse on click
-var delay = 10.0
 
 func _ready():
 	if sprite.texture:
 		sprite_size = sprite.texture.get_size() * sprite.scale
 	else:
-		print("Error: El sprite no tiene una textura asignada.")
+		print("Error: The sprite doesn't have a texture assigned")
 
 func _process(delta):
 	move(delta)
