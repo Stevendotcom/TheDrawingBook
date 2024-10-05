@@ -1,22 +1,21 @@
-#Tampoco chequea los limites del movimiento en base a las medidas del monster
 
 extends Area2D
 @onready var sprite = $MonsterSprite
 
 #Random movement
-static var speed = 300
-static var time_to_move = 3.0
-static var tolerance = 10.0
+var speed: int = 300
+var time_to_move: float = 3.0
+var tolerance: float = 10.0
 
-var position_target = Vector2()
-var time_waited = 0.0
-var is_moving = false
-var sprite_size = Vector2()
+var position_target: Vector2 = Vector2()
+var sprite_size: Vector2 = Vector2()
+var time_waited: float = 0.0
+var is_moving: bool = false
 
 #Drag and drop
-static var delay = 10.0
-var is_dragging = false #state management
-var mouse_offset #center mouse on click
+var delay: float = 10.0
+var is_dragging: bool = false #state management
+var mouse_offset: Vector2 = Vector2() #center mouse on click
 
 func _ready():
 	if sprite.texture:
@@ -43,7 +42,7 @@ func generate_random_position():
 		randf_range(sprite_size.x / 2 + tolerance, get_viewport().size.x - sprite_size.x / 2 - tolerance),
 		randf_range(sprite_size.y / 2 + tolerance, get_viewport().size.y - sprite_size.y / 2 - tolerance)
 	)
-	print("Target position: ", position_target)
+	#print("Target position: ", position_target)
 	is_moving = true
 	time_waited = 0.0
 
@@ -53,7 +52,7 @@ func move_to_target(delta):
 
 	if position.distance_to(position_target) <= tolerance:
 		is_moving = false
-		print("Position reached")
+		#print("Position reached")
 
 
 
