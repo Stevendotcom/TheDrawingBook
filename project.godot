@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 
 SettingsManager="*res://extras/settings-manager.gd"
 
+[display]
+
+window/size/viewport_width=1366
+window/size/viewport_height=768
+window/size/mode=2
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
