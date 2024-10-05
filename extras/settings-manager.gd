@@ -5,20 +5,24 @@ enum Axis {
 	HEIGHT,
 }
 
-var volume: int = 5
-var screen_width: int = 1366
-var screen_height: int = 768
-var fullscreen: bool = false
-
 const screen_sizes = {
 	"large" = [1366, 768],
 	"mid" = [1280, 720],
 	"small" = [1024, 576],
 }
+const volume_def: float = 5
+const screen_width_def: int = 1366
+const screen_height_def: int = 768
+const fullscreen_def: bool = false
+
+var volume: float = volume_def
+var screen_width: int = screen_width_def
+var screen_height: int = screen_height_def
+var fullscreen: bool = fullscreen_def
 
 const max_vol: int = 10
 
-func change_vol(newVol: int) -> void:
+func change_vol(newVol: float) -> void:
 	volume = newVol
 
 func change_screen_size(screen_size: String) -> void:
