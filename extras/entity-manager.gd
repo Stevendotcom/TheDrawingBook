@@ -25,7 +25,10 @@ func merge_monster(this_node: Node, monster_id_a: int, monster_id_b: int):
 			upgrade_monster(this_node, monster_id_a)
 			delete_monster(this_node, monster_id_b)
 		
-
+func upgrade_monster(this_node: Node, monster_id):
+	if in_range(monster_id) and entities[monster_id] != null:
+		entities[monster_id].level +=1
+		#set_sprite(monster_id, entities[monster_id].level)
 
 func in_range(monster_id: int) -> bool:
 	return monster_id < amount_entities_max and monster_id >= 0
