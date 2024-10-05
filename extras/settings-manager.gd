@@ -6,13 +6,14 @@ enum Axis {
 }
 
 const screen_sizes = {
-	"large" = [1366, 768],
-	"mid" = [1280, 720],
-	"small" = [1024, 576],
-}
+	"large": [1920, 1080], # common for Full HD
+	"mid": [1366, 768], # common for laptops
+	"small": [1024, 576], # common for smaller devices
+};
+
 const volume_def: float = 5
-const screen_width_def: int = 1366
-const screen_height_def: int = 768
+const screen_width_def: int = 1920
+const screen_height_def: int = 1080
 const fullscreen_def: bool = false
 
 var volume: float = volume_def
