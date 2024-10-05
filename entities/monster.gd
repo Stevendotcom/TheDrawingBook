@@ -14,8 +14,8 @@ var is_moving: bool = false
 
 #Drag and drop
 var delay: float = 10.0
-var is_dragging: bool = false #state management
 var mouse_offset: Vector2 = Vector2() #center mouse on click
+var is_dragging: bool = false
 
 func _ready() -> void:
 	if sprite.texture:
@@ -47,7 +47,7 @@ func generate_random_position() -> void:
 	time_waited = 0.0
 
 func move_to_target(delta) -> void:
-	var direction = (position_target - position).normalized()
+	var direction: Vector2 = (position_target - position).normalized()
 	position += direction * speed * delta
 
 	if position.distance_to(position_target) <= tolerance:
@@ -60,15 +60,16 @@ func move_to_target(delta) -> void:
 func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT: 
 		if event.pressed: #User Left Clicks
-			var local_mouse_pos = to_local(event.position) #Save mouse position
+			var local_mouse_pos: Vector2 = to_local(event.position) #Save mouse position
 			if sprite.get_rect().has_point(local_mouse_pos): #The click is on the monster
 				is_dragging = true
 				mouse_offset = get_global_mouse_position()-global_position
 		else:
 			is_dragging = false
 
+
 func drag(delta) -> void:
-	if is_dragging == true:
+	if is_dragging:
 		var tween = get_tree().create_tween() #Generate tween for animation
 		tween.tween_property(self, "position", get_global_mouse_position()-mouse_offset, delay * delta) #Set animation properties
 		#Stop random movement
