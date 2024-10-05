@@ -1,8 +1,8 @@
 extends Node
 
-enum axis {
-	width,
-	height,
+enum Axis {
+	WIDTH,
+	HEIGHT,
 }
 
 var volume: int = 5
@@ -23,9 +23,22 @@ func change_vol(newVol: int) -> void:
 
 func change_screen_size(screen_size: String) -> void:
 	if screen_sizes.find_key(screen_size):
-		screen_width = screen_sizes[screen_size][axis.width]
-		screen_height = screen_sizes[screen_size][1]
+		screen_width = screen_sizes[screen_size][Axis.WIDTH]
+		screen_height = screen_sizes[screen_size][Axis.HEIGHT]
 
 
 func toggle_fullscreen() ->void:
 	fullscreen = !fullscreen
+
+func update_settings() -> void:
+	ProjectSettings.set_setting("display/window/size/viewport_height", screen_height)
+	ProjectSettings.set_setting("display/window/size/viewport_width", screen_width)
+	ProjectSettings.set_setting(
+		"", 
+		DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN if fullscreen 
+		else DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED
+		)
+	AudioServer.set_bus_volume_db(
+			AudioServer.get_bus_index("Master"),
+			linear_to_db(volume)
+		)
