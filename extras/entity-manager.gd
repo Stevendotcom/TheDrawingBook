@@ -22,14 +22,14 @@ func delete_monster(this_node: Node, monster_id: int) -> void:
 
 func merge_monster(this_node: Node, monster_id_a: int, monster_id_b: int):
 	if _in_range(monster_id_a) and _in_range(monster_id_b) and entities[monster_id_a] != null and entities[monster_id_b] != null:
-		if entities[monster_id_a].level == entities[monster_id_b].level:
+		if entities[monster_id_a].evolution == entities[monster_id_b].evolution:
 			upgrade_monster(this_node, monster_id_a)
 			delete_monster(this_node, monster_id_b)
 		
 func upgrade_monster(this_node: Node, monster_id: int):
 	if _in_range(monster_id) and entities[monster_id] != null:
-		entities[monster_id].level +=1
-		_set_sprite(monster_id, entities[monster_id].level)
+		entities[monster_id].evolution +=1
+		_set_sprite(monster_id)
 
 func get_active_monsters() -> Array:
 	var temp: Array[Node]
@@ -40,7 +40,7 @@ func get_active_monsters() -> Array:
 
 func _set_sprite(monster_id: int):
 	if _in_range(monster_id) and entities[monster_id] != null:
-		entities[monster_id].sprite.texture = TextureManager.get_corresponding_texture(entities[monster_id].level)
+		entities[monster_id].sprite.texture = TextureManager.get_corresponding_texture(entities[monster_id].level, entities[monster_id].base, entities[monster_id].evolution)
 
 func _in_range(monster_id: int) -> bool:
 	return monster_id < amount_entities_max and monster_id >= 0
