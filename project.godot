@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="The Drawing Book"
-run/main_scene="res://entities/monster.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SettingsManager="*res://extras/settings-manager.gd"
+EntityManager="*res://extras/entity-manager.gd"
+TextureManager="*res://extras/texture-manager.gd"
 
 [display]
 
