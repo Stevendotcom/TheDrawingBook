@@ -20,6 +20,7 @@ run/main_scene="res://scenes/main_menu.tscn"
 SceneManager="*res://Autoloads/SceneManager.gd"
 SettingsManager="*res://extras/settings-manager.gd"
 EntityManager="*res://extras/entity-manager.gd"
+TextureManager="*res://extras/texture-manager.gd"
 
 [display]
 
