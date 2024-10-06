@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://n2aoxjvj10s3"]
+
+[ext_resource type="Script" path="res://extras/scene_manager/main_menu.gd" id="1_ih5gw"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4qls5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86pun"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ftw4"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ih5gw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1152, 648)
+texture = SubResource("CompressedTexture2D_4qls5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 150
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_86pun")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2ftw4")
+text = " PLAY "
+
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_up"]
