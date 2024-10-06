@@ -93,6 +93,14 @@ layout_mode = 2
 theme_override_constants/margin_right = 785
 
 [connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/PlayButton" to="." method="_on_play_button_up"]
+[connection signal="mouse_entered" from="BoxContainer/HBoxContainer/Buttons/PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="BoxContainer/HBoxContainer/Buttons/PlayButton" to="." method="_on_play_button_mouse_exited"]
 [connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/OptionsButton" to="." method="_on_options_button_button_up"]
+[connection signal="mouse_entered" from="BoxContainer/HBoxContainer/Buttons/OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="mouse_exited" from="BoxContainer/HBoxContainer/Buttons/OptionsButton" to="." method="_on_options_button_mouse_exited"]
 [connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/CreditsButton" to="." method="_on_credits_button_button_up"]
+[connection signal="mouse_entered" from="BoxContainer/HBoxContainer/Buttons/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="mouse_exited" from="BoxContainer/HBoxContainer/Buttons/CreditsButton" to="." method="_on_credits_button_mouse_exited"]
 [connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/Exit" to="." method="_on_exit_button_up"]
+[connection signal="mouse_entered" from="BoxContainer/HBoxContainer/Buttons/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="mouse_exited" from="BoxContainer/HBoxContainer/Buttons/Exit" to="." method="_on_exit_mouse_exited"]
