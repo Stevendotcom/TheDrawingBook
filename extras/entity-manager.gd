@@ -12,6 +12,7 @@ func new_monster(this_node: Node) -> void:
 		var instance : Node = MONSTER.instantiate()
 		entities.push_back(instance)
 		this_node.add_child(instance)
+		instance.id = amount_entities
 		amount_entities += 1
 
 func delete_monster(this_node: Node, monster_id: int) -> void:

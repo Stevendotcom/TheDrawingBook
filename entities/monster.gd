@@ -22,6 +22,8 @@ var delay: float = 10.0
 var mouse_offset: Vector2 = Vector2() #center mouse on click
 var is_dragging: bool = false
 
+var id: int
+
 func _ready() -> void:
 	if sprite.texture:
 		sprite_size = sprite.texture.get_size() * sprite.scale
