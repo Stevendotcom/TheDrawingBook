@@ -34,5 +34,5 @@ func populate() -> Error:
 		return Error.OK
 	return Error.ERR_ALREADY_IN_USE
 
-func get_corresponding_texture(base: int, level: int, monster_id: int):
-	return textures[level][base][monster_id]
+func get_corresponding_texture(base: int, level: int, evolution: int):
+	return textures[level][base][evolution]
