@@ -23,6 +23,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Left"):
 		scene_triggers[1]._on_left_click()
 		is_enabled = false
+	if Input.is_action_just_pressed("ui_accept"):
+		EntityManager.new_monster(self)
 
 func enter_level() -> void:
 	if data != null:
@@ -51,3 +53,7 @@ func _disconnect_from_triggers() -> void:
 	for trigger in scene_triggers:
 		if not trigger.player_entered_trigger.is_connected(_on_player_entered_trigger):
 			trigger.player_entered_trigger.disconnect(_on_player_entered_trigger)
+
+
+func _on_pause_button_up() -> void:
+	pass # Replace with function body.

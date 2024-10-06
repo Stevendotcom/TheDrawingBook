@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ymb8v3mnmiic"
-path="res://.godot/imported/background.png-d3021ee669966d949a8bda0f7a8ee34c.ctex"
+uid="uid://cop1pk1wfy82t"
+path="res://.godot/imported/Boton Pausa.png-0aa4576d9ea54d2f8588098527684d94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Zone2/background.png"
-dest_files=["res://.godot/imported/background.png-d3021ee669966d949a8bda0f7a8ee34c.ctex"]
+source_file="res://resources/sprites/UI/Boton Pausa.png"
+dest_files=["res://.godot/imported/Boton Pausa.png-0aa4576d9ea54d2f8588098527684d94.ctex"]
 
 [params]
 

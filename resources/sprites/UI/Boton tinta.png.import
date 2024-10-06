@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b72kbscy4occ7"
-path="res://.godot/imported/background.png-d8f207a7f1962180387a63591c941284.ctex"
+uid="uid://x0n6xt2q78i6"
+path="res://.godot/imported/Boton tinta.png-bd285ecdfbcae246e8d93c0577365b0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Zone3/background.png"
-dest_files=["res://.godot/imported/background.png-d8f207a7f1962180387a63591c941284.ctex"]
+source_file="res://resources/sprites/UI/Boton tinta.png"
+dest_files=["res://.godot/imported/Boton tinta.png-bd285ecdfbcae246e8d93c0577365b0a.ctex"]
 
 [params]
 
