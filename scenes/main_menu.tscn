@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://n2aoxjvj10s3"]
+[gd_scene load_steps=7 format=3 uid="uid://siv05agkokfs"]
 
 [ext_resource type="Script" path="res://extras/scene_manager/main_menu.gd" id="1_ih5gw"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4qls5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86pun"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ftw4"]
+[ext_resource type="Texture2D" uid="uid://b1jv8ybrkjcew" path="res://resources/Main Menu/MainMenu.jpg" id="2_5gti7"]
+[ext_resource type="Texture2D" uid="uid://cd6huoivk4dn2" path="res://resources/Main Menu/Botones/play.png" id="3_nle8c"]
+[ext_resource type="Texture2D" uid="uid://b1fw05e17mhd6" path="res://resources/Main Menu/Botones/Options.png" id="4_33ugm"]
+[ext_resource type="Texture2D" uid="uid://cybiuhv42l11s" path="res://resources/Main Menu/Botones/credits.png" id="5_81yjs"]
+[ext_resource type="Texture2D" uid="uid://c4dtqrc5i4ww3" path="res://resources/Main Menu/Botones/Exit.png" id="6_1t2k5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,11 +16,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ih5gw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1152, 648)
-texture = SubResource("CompressedTexture2D_4qls5")
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5gti7")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="BoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,19 +35,64 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BoxContainer"]
 layout_mode = 2
-alignment = 1
+theme_override_constants/margin_top = 500
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 150
+size_flags_vertical = 3
 
-[node name="PlayButton" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="BoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-theme_override_styles/hover = SubResource("StyleBoxFlat_86pun")
-theme_override_styles/normal = SubResource("StyleBoxFlat_2ftw4")
-text = " PLAY "
+theme_override_constants/margin_left = 785
 
-[connection signal="button_up" from="VBoxContainer/HBoxContainer/MarginContainer/PlayButton" to="." method="_on_play_button_up"]
+[node name="Buttons" type="VBoxContainer" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 14
+
+[node name="MarginTop" type="MarginContainer" parent="BoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_top = 79
+
+[node name="PlayButton" type="TextureButton" parent="BoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_nle8c")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="OptionsButton" type="TextureButton" parent="BoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_33ugm")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="CreditsButton" type="TextureButton" parent="BoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_vertical = 7
+texture_normal = ExtResource("5_81yjs")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Exit" type="TextureButton" parent="BoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_vertical = 7
+texture_normal = ExtResource("6_1t2k5")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginBottom" type="MarginContainer" parent="BoxContainer/HBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 86
+
+[node name="MarginContainer" type="MarginContainer" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 785
+
+[connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/PlayButton" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/OptionsButton" to="." method="_on_options_button_button_up"]
+[connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/CreditsButton" to="." method="_on_credits_button_button_up"]
+[connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/Exit" to="." method="_on_exit_button_up"]
