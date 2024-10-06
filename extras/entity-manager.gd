@@ -4,7 +4,7 @@ const MONSTER = preload("res://entities/monster.tscn")
 const ICON = preload("res://extras/icon.svg") #TODO REMOVE
 
 var amount_entities: int = 0
-var entities: Array = [null]
+var entities: Array[Node] = [null]
 const amount_entities_max: int = 15
 
 func new_monster(this_node: Node) -> void:
@@ -29,15 +29,18 @@ func merge_monster(this_node: Node, monster_id_a: int, monster_id_b: int):
 func upgrade_monster(this_node: Node, monster_id: int):
 	if _in_range(monster_id) and entities[monster_id] != null:
 		entities[monster_id].level +=1
-		#_set_sprite(monster_id, entities[monster_id].level)
+		_set_sprite(monster_id, entities[monster_id].level)
+
+func get_active_monsters() -> Array:
+	var temp: Array[Node]
+	for entity in entities:
+		if entity != null:
+			temp.push_back(entity)
+	return temp
 
 func _set_sprite(monster_id: int):
 	if _in_range(monster_id) and entities[monster_id] != null:
-		entities[monster_id].sprite.texture = _get_corresponding_texture(entities[monster_id].level)
-
-func _get_corresponding_texture(level: int) -> Texture2D:
-	#TODO make a texture_manager where this function should be
-	return ICON
+		entities[monster_id].sprite.texture = TextureManager.get_corresponding_texture(entities[monster_id].level)
 
 func _in_range(monster_id: int) -> bool:
 	return monster_id < amount_entities_max and monster_id >= 0

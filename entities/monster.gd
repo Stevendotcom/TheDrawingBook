@@ -4,7 +4,8 @@ extends Area2D
 
 #Stats
 @export var level: int = 0
-
+@export var base: int = 0
+@export var evolution: int = 0
 
 #Random movement
 @export var speed: int = 300
