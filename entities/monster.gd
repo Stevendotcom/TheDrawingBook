@@ -1,16 +1,16 @@
 
 extends Area2D
+var id: int
+
 @onready var sprite = $MonsterSprite
 
-#Stats
-@export var level: int = 0
-@export var base: int = 0
-@export var evolution: int = 0
+var play_area_size: Vector2
+var play_area_pos: Vector2
 
 #Random movement
-@export var speed: int = 300
-@export var time_to_move: float = 3.0
-@export var tolerance: float = 10.0
+var speed: int = 300
+var time_to_move: float = 3.0
+var tolerance: float = 10.0
 
 var position_target: Vector2 = Vector2()
 var sprite_size: Vector2 = Vector2()
@@ -21,8 +21,6 @@ var is_moving: bool = false
 var delay: float = 10.0
 var mouse_offset: Vector2 = Vector2() #center mouse on click
 var is_dragging: bool = false
-
-var id: int
 
 func _ready() -> void:
 	if sprite.texture:
@@ -46,8 +44,8 @@ func move(delta) -> void:
 
 func generate_random_position() -> void:
 	position_target = Vector2(
-		randf_range(sprite_size.x / 2 + tolerance, get_viewport().size.x - sprite_size.x / 2 - tolerance),
-		randf_range(sprite_size.y / 2 + tolerance, get_viewport().size.y - sprite_size.y / 2 - tolerance)
+		randf_range(play_area_pos.x / 2 + tolerance, play_area_size.x - sprite_size.x / 2 - tolerance),
+		randf_range(play_area_pos.y / 2 + tolerance, play_area_size.y - sprite_size.y / 2 - tolerance)
 	)
 	#print("Target position: ", position_target)
 	is_moving = true

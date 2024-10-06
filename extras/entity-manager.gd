@@ -13,6 +13,8 @@ func new_monster(this_node: Node) -> void:
 		entities.push_back(instance)
 		this_node.add_child(instance)
 		instance.id = amount_entities
+		instance.play_area_size = this_node.get_node("PlayableArea/Shape").get_shape().size
+		instance.play_area_pos = this_node.get_node("PlayableArea/Shape").position
 		amount_entities += 1
 
 func delete_monster(this_node: Node, monster_id: int) -> void:

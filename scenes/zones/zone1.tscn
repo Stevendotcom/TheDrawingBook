@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://x0n6xt2q78i6" path="res://resources/sprites/UI/Boton tinta.png" id="6_iwdv0"]
 [ext_resource type="Texture2D" uid="uid://cop1pk1wfy82t" path="res://resources/sprites/UI/Boton Pausa.png" id="7_8hvc2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnxrd"]
-size = Vector2(1583, 820)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ufm0"]
+size = Vector2(1607, 824)
 
 [node name="Zone" type="Control" node_paths=PackedStringArray("scene_triggers")]
 layout_mode = 3
@@ -120,12 +120,13 @@ texture_normal = ExtResource("7_8hvc2")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="PlayableArea" type="Area2D" parent="."]
 position = Vector2(135, 105)
+collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(831, 442)
-shape = SubResource("RectangleShape2D_wnxrd")
+[node name="Shape" type="CollisionShape2D" parent="PlayableArea"]
+position = Vector2(834, 445)
+shape = SubResource("RectangleShape2D_7ufm0")
 
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_left_click"]
 [connection signal="button_up" from="VBoxContainer2/HBoxContainer/Button" to="VBoxContainer2/HBoxContainer/Button" method="_on_left_click"]
