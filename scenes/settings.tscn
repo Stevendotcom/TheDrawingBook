@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://m4qcugqh2cod"]
+
+[ext_resource type="Script" path="res://extras/settings-manager.gd" id="2_sbdt3"]
+[ext_resource type="Texture2D" uid="uid://dajx28th0bd5t" path="res://sprites/Settings/Settings.png" id="3_56v8a"]
+[ext_resource type="Texture2D" uid="uid://bxuwa4uxyflgx" path="res://sprites/Settings/Buttons/Boton_Expandir.png" id="4_f8ifo"]
+[ext_resource type="Texture2D" uid="uid://btdg0vmememgv" path="res://sprites/Settings/Buttons/Boton_Contraer.png" id="5_m66ao"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="SettingsManager" type="Node" parent="."]
+script = ExtResource("2_sbdt3")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+position = Vector2(9.15527e-05, 0)
+scale = Vector2(1.50235, 1.5)
+texture = ExtResource("3_56v8a")
+metadata/_edit_lock_ = true
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.325
+anchor_top = 0.378
+anchor_right = 0.641
+anchor_bottom = 0.422
+offset_left = -6.10352e-05
+offset_top = -0.240021
+offset_right = 4.27991
+offset_bottom = 0.23999
+step = 10.0
+value = 100.0
+scrollable = false
+ticks_on_borders = true
+metadata/_edit_lock_ = true
+
+[node name="WindowMode" type="Button" parent="."]
+layout_mode = 2
+offset_left = 680.0
+offset_top = 712.0
+offset_right = 842.0
+offset_bottom = 882.0
+icon = ExtResource("5_m66ao")
+metadata/_edit_lock_ = true
+
+[node name="FullScreen" type="Button" parent="."]
+layout_mode = 2
+offset_left = 931.0
+offset_top = 708.0
+offset_right = 1110.0
+offset_bottom = 878.0
+action_mode = 0
+icon = ExtResource("4_f8ifo")
+metadata/_edit_lock_ = true
+
+[connection signal="value_changed" from="VolumeSlider" to="SettingsManager" method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="WindowMode" to="SettingsManager" method="_on_window_mode_pressed"]
+[connection signal="pressed" from="FullScreen" to="SettingsManager" method="_on_full_screen_pressed"]
