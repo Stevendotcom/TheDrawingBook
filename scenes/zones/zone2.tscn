@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs1qln4dtbviw"]
+
+[ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_uo57c"]
+[ext_resource type="Texture2D" uid="uid://ymb8v3mnmiic" path="res://sprites/Zone2/background.png" id="2_1e0k5"]
+[ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://sprites/UI/arrow.png" id="3_gxtyl"]
+[ext_resource type="Script" path="res://extras/scene_manager/scene_loader.gd" id="4_xw36a"]
+
+[node name="Zone" type="Control" node_paths=PackedStringArray("scene_triggers")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uo57c")
+scene_triggers = [NodePath("VBoxContainer/HBoxContainer/Button"), NodePath("VBoxContainer2/HBoxContainer/Button")]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+texture = ExtResource("2_1e0k5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -153.0
+offset_right = 499.0
+offset_bottom = 1944.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_gxtyl")
+flat = true
+script = ExtResource("4_xw36a")
+entry_direction = 1
+transition_type = "wipe"
+path_to_new_scene = "res://scenes/zones/zone3.tscn"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 105.0
+offset_top = 160.0
+offset_right = 699.0
+offset_bottom = 2257.0
+grow_vertical = 2
+rotation = 3.14159
+scale = Vector2(0.15, 0.15)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_gxtyl")
+flat = true
+script = ExtResource("4_xw36a")
+entry_direction = 2
+transition_type = "wipe"
+path_to_new_scene = "res://scenes/zones/zone1.tscn"
+
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_left_click"]
+[connection signal="button_up" from="VBoxContainer2/HBoxContainer/Button" to="VBoxContainer2/HBoxContainer/Button" method="_on_left_click"]
