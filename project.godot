@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SettingsManager="*res://extras/settings-manager.gd"
+AudioManager="*res://scenes/audio_manager.tscn"
 EntityManager="*res://extras/entity-manager.gd"
 TextureManager="*res://extras/texture-manager.gd"
 SceneManager="*res://Autoloads/SceneManager.gd"

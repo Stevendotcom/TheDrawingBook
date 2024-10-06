@@ -5,7 +5,6 @@ signal transition_in_complete
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var anim_player: AnimationPlayer = %AnimationPlayer
 @onready var timer: Timer = $Timer
-
 var starting_animation_name:String
 
 func _ready() -> void:
