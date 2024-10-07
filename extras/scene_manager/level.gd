@@ -56,8 +56,8 @@ func _on_player_entered_trigger(trigger:SceneLoader) -> void:
 	data = LevelDataHandoff.new()
 	data.move_dir = trigger.get_move_dir()
 	data.entities = EntityManager.entities.duplicate()
+	EntityManager.entities.clear()
 	data.total_ink = total_ink
-	EntityManager.amount_entities = 0
 	set_process(false)
 	
 func _connect_to_triggers() -> void:
