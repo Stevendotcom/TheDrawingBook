@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_uo57c"]
 [ext_resource type="Texture2D" uid="uid://ymb8v3mnmiic" path="res://resources/sprites/Zone2/background.png" id="2_1e0k5"]
 [ext_resource type="Texture2D" uid="uid://do5xl8mcoso80" path="res://resources/sprites/UI/Decoraciones png.png" id="3_72jw7"]
-[ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://resources/sprites/UI/arrow.png" id="3_gxtyl"]
 [ext_resource type="Texture2D" uid="uid://x0n6xt2q78i6" path="res://resources/sprites/UI/Boton tinta.png" id="4_hl2gy"]
 [ext_resource type="Script" path="res://extras/scene_manager/scene_loader.gd" id="4_xw36a"]
 [ext_resource type="Theme" uid="uid://bnok4x7uk7f8y" path="res://resources/ink_text.tres" id="5_3qejk"]
 [ext_resource type="Texture2D" uid="uid://cop1pk1wfy82t" path="res://resources/sprites/UI/Boton Pausa.png" id="5_ey0jt"]
+[ext_resource type="Texture2D" uid="uid://bimvcxwnb5lr6" path="res://resources/Flecha.png" id="7_ibsef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpbqc"]
 size = Vector2(1607, 824)
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uo57c")
-scene_triggers = [NodePath("VBoxContainer/HBoxContainer/Button"), NodePath("VBoxContainer2/HBoxContainer/Button")]
+scene_triggers = [NodePath("Button"), NodePath("Button2")]
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -81,63 +81,6 @@ texture_normal = ExtResource("5_ey0jt")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -153.0
-offset_right = 499.0
-offset_bottom = 1944.0
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(0.15, 0.15)
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_direction = 2
-layout_mode = 2
-alignment = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("3_gxtyl")
-flat = true
-script = ExtResource("4_xw36a")
-entry_direction = 1
-transition_type = "wipe"
-path_to_new_scene = "res://scenes/zones/zone3.tscn"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 105.0
-offset_top = 160.0
-offset_right = 699.0
-offset_bottom = 2257.0
-grow_vertical = 2
-rotation = 3.14159
-scale = Vector2(0.15, 0.15)
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
-layout_mode = 2
-alignment = 2
-
-[node name="Button" type="Button" parent="VBoxContainer2/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("3_gxtyl")
-flat = true
-script = ExtResource("4_xw36a")
-entry_direction = 2
-transition_type = "wipe"
-path_to_new_scene = "res://scenes/zones/zone1.tscn"
-
 [node name="PlayableArea" type="Area2D" parent="."]
 position = Vector2(135, 105)
 collision_layer = 2
@@ -146,5 +89,39 @@ collision_layer = 2
 position = Vector2(834, 445)
 shape = SubResource("RectangleShape2D_cpbqc")
 
-[connection signal="button_up" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_left_click"]
-[connection signal="button_up" from="VBoxContainer2/HBoxContainer/Button" to="VBoxContainer2/HBoxContainer/Button" method="_on_left_click"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1686.0
+offset_top = 50.0
+offset_right = -115.0
+offset_bottom = 179.0
+rotation = -1.5708
+icon = ExtResource("7_ibsef")
+flat = true
+script = ExtResource("4_xw36a")
+entry_direction = 1
+transition_type = "wipe"
+path_to_new_scene = "res://scenes/zones/zone3.tscn"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
+anchor_top = 0.485
+anchor_right = 1.0
+anchor_bottom = 0.485
+offset_left = 212.0
+offset_top = -57.8
+offset_right = -1589.0
+offset_bottom = 71.2
+rotation = 1.5708
+icon = ExtResource("7_ibsef")
+flat = true
+script = ExtResource("4_xw36a")
+entry_direction = 2
+transition_type = "wipe"
+path_to_new_scene = "res://scenes/zones/zone1.tscn"
+
+[connection signal="button_up" from="Button" to="Button" method="_on_left_click"]
+[connection signal="button_up" from="Button2" to="Button2" method="_on_left_click"]
