@@ -33,7 +33,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_81n2d")
 scene_triggers = [NodePath("Forward/HBoxContainer/Button"), NodePath("Back/HBoxContainer/Button")]
-total_ink = 10000.0
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

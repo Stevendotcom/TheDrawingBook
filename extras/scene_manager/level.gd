@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 	
 	timer += _delta	
 	if timer > 1:
-		#total_ink = _get_total_ink_per_second()
+		total_ink = _get_total_ink_per_second()
 		ink_amount.set_text("[center]{0} oz[/center]".format([total_ink]))
 		timer = 0
 
