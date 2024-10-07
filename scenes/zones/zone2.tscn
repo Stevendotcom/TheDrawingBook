@@ -54,6 +54,7 @@ texture = ExtResource("4_hl2gy")
 expand_mode = 3
 
 [node name="Pause" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 180.0
 offset_top = 156.0
 offset_right = 257.0
