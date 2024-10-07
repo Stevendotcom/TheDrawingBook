@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfthlxdni0cne"]
+[gd_scene load_steps=7 format=3 uid="uid://voppxgd86nb1"]
 
 [ext_resource type="Texture2D" uid="uid://dmga8miutjmxw" path="res://resources/pause_menu_res/LibretaV2_Pause_Menu.png" id="1_573ac"]
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_fsckq"]
 [ext_resource type="Texture2D" uid="uid://dc7nxtutese2e" path="res://resources/pause_menu_res/Bottom_Options_Pause_Menu.png" id="2_to6iq"]
 [ext_resource type="Texture2D" uid="uid://ccamb1bwp4t0d" path="res://resources/pause_menu_res/Bottom_Continue_Pause_Menu.png" id="4_cf5nw"]
 [ext_resource type="Texture2D" uid="uid://bvwxxbxdpnlu" path="res://resources/pause_menu_res/Bottom_Exit_to_menu_Pause_Menu.png" id="5_itl2w"]
+[ext_resource type="PackedScene" uid="uid://cjn30ilx82o2o" path="res://scenes/settings.tscn" id="6_vg7pt"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +14,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fsckq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.368627)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -49,20 +61,28 @@ alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 400
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="options" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("2_to6iq")
 
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="continue" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("4_cf5nw")
 
-[node name="TextureButton3" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="exit" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("5_itl2w")
+
+[node name="Settings" parent="." instance=ExtResource("6_vg7pt")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/options" to="." method="_on_texture_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/continue" to="." method="_on_continue_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/exit" to="." method="_on_exit_button_up"]
