@@ -8,7 +8,6 @@ func _ready() -> void:
 	is_enabled = false
 	for trigger in scene_triggers:
 		trigger.hide()
-	# TODO: Disable old creatures with EntityManager
 	if data == null:
 		enter_level()
 
@@ -23,11 +22,13 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Left"):
 		scene_triggers[1]._on_left_click()
 		is_enabled = false
+	if Input.is_action_just_pressed("ui_accept"):
+		EntityManager.new_monster(self)
 
 func enter_level() -> void:
 	if data != null:
-		print("Init Creatures")
-		# TODO: Init creatures with EntityManager if there is data of creatures
+		for entity in data.entities:
+			EntityManager.new_monster(self)
 	# TODO: Enable them creatures with EntityManager
 	
 	for trigger in scene_triggers:
@@ -39,6 +40,8 @@ func _on_player_entered_trigger(trigger:SceneLoader) -> void:
 	_disconnect_from_triggers()
 	data = LevelDataHandoff.new()
 	data.move_dir = trigger.get_move_dir()
+	data.entities = EntityManager.entities.duplicate()
+	EntityManager.amount_entities = 0
 	set_process(false)
 	
 func _connect_to_triggers() -> void:
@@ -55,3 +58,10 @@ func _disconnect_from_triggers() -> void:
 
 func _on_pause_button_up() -> void:
 	pass # Replace with function body.
+
+func _bought(base: int) -> void:
+	#probably a bad place to put it, but if there is no bottons there is no problem
+	#if enough ink
+	#subtract from ink
+	var monster: Node = EntityManager.new_monster(self)
+	#monster.sprite = TextureManager.get_corresponding_texture(base, 0,0)

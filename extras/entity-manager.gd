@@ -4,10 +4,10 @@ const MONSTER = preload("res://entities/monster.tscn")
 const ICON = preload("res://extras/icon.svg") #TODO REMOVE
 
 var amount_entities: int = 0
-var entities: Array[Node] = [null]
+var entities: Array[Node]
 const amount_entities_max: int = 15
 
-func new_monster(this_node: Node) -> void:
+func new_monster(this_node: Node) -> Node:
 	if amount_entities < amount_entities_max:
 		var instance : Node = MONSTER.instantiate()
 		entities.push_back(instance)
@@ -16,6 +16,9 @@ func new_monster(this_node: Node) -> void:
 		instance.play_area_size = this_node.get_node("PlayableArea/Shape").get_shape().size
 		instance.play_area_pos = this_node.get_node("PlayableArea/Shape").position
 		amount_entities += 1
+		
+		return instance
+	return null
 
 func delete_monster(this_node: Node, monster_id: int) -> void:
 	if _in_range(monster_id) and entities[monster_id] != null:
