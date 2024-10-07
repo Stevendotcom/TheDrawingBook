@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://m4qcugqh2cod"]
 
 [ext_resource type="Script" path="res://scenes/settings.gd" id="1_ky3t2"]
-[ext_resource type="Script" path="res://extras/settings-manager.gd" id="2_sbdt3"]
 [ext_resource type="Texture2D" uid="uid://dajx28th0bd5t" path="res://sprites/Settings/Settings.png" id="3_56v8a"]
 [ext_resource type="Texture2D" uid="uid://byllkwadp0pc3" path="res://sprites/Settings/Buttons/Flecha.png" id="4_56ual"]
 [ext_resource type="Texture2D" uid="uid://ort5odu2yb8j" path="res://sprites/Settings/Buttons/Boton Small.png" id="5_3psfq"]
 [ext_resource type="Texture2D" uid="uid://du6mewva6tih" path="res://sprites/Settings/Buttons/Boton Medium.png" id="6_pi6hi"]
 [ext_resource type="Texture2D" uid="uid://cqbq38vlqu64n" path="res://sprites/Settings/Buttons/Boton Large.png" id="7_1u16w"]
 [ext_resource type="Texture2D" uid="uid://clfb6g0m1ip75" path="res://sprites/Settings/Buttons/Boton Full Screen.png" id="8_lyun1"]
+[ext_resource type="Texture2D" uid="uid://cxlkpbl423w1e" path="res://sprites/Settings/Buttons/Bottom_BackV2_Pause_Menu.png" id="9_5ecoy"]
 [ext_resource type="Texture2D" uid="uid://omckh80tug1c" path="res://sprites/Settings/Buttons/Bottom_Back_Pause_Menu.png" id="9_fe8a0"]
 
 [node name="Settings" type="Control"]
@@ -32,9 +32,6 @@ texture = ExtResource("3_56v8a")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
-
-[node name="SettingsManager" type="Node" parent="."]
-script = ExtResource("2_sbdt3")
 
 [node name="VolumeSlider" type="HSlider" parent="."]
 layout_mode = 1
@@ -128,18 +125,23 @@ scale = Vector2(1.09, 1.09)
 texture_normal = ExtResource("8_lyun1")
 metadata/_edit_use_anchors_ = true
 
-[node name="Back" type="TextureButton" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_direction = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.829333
-anchor_top = 0.718815
-anchor_right = 1.00133
-anchor_bottom = 1.00581
-offset_left = -0.320007
-offset_top = -0.320007
-offset_right = 0.439941
-offset_bottom = -0.280029
+anchor_left = 0.000729163
+anchor_right = 0.000729163
+anchor_bottom = 0.211
+offset_left = -134.4
+offset_right = 369.6
+offset_bottom = 82.12
+scale = Vector2(0.735, 0.735)
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
 texture_normal = ExtResource("9_fe8a0")
+texture_hover = ExtResource("9_5ecoy")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]
@@ -147,3 +149,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="Medium" to="." method="_on_medium_pressed"]
 [connection signal="pressed" from="Large" to="." method="_on_large_pressed"]
 [connection signal="pressed" from="FullScreen" to="." method="_on_full_screen_pressed"]
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_back_pressed"]

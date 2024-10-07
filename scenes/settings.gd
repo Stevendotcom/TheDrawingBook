@@ -8,24 +8,25 @@ var arrow_original_position : Vector2
 
 func _ready() -> void:
 	arrow_original_position = arrow.position
-	$Small.mouse_entered.connect(toggle_hover.bind([$Small, true]))
-	
-
-func toggle_hover(button : TextureButton, is_hovering: bool):
-	print(is_hovering)
-	if is_hovering:
-		_upscale(button)
-	else	:
-		_downscale(button)
-	
-func _upscale(button: TextureButton) -> void:
-	const scale: float = 1.1
-	button.scale = Vector2(scale,scale)
-	button.position = Vector2(button.position.x - (button.size.x * scale - button.size.x)/2, button.position.y - (button.size.y * scale - button.size.y)/2)
-
-func _downscale(button: TextureButton) -> void:
-	button.scale = Vector2(1,1)
-	button.position = Vector2(button.position.x + (button.size.x - button.size.x*0.9)/2, button.position.y + (button.size.y - button.size.y*0.9)/2)
+	#var button = get_node("Small")
+	#button.mouse_entered.connect(toggle_hover.bind([button, true]))
+	#
+#
+#func toggle_hover(button : TextureButton, is_hovering: bool):
+	#print(is_hovering)
+	#if is_hovering:
+		#_upscale(button)
+	#else	:
+		#_downscale(button)
+	#
+#func _upscale(button: TextureButton) -> void:
+	#const scale: float = 1.1
+	#button.scale = Vector2(scale,scale)
+	#button.position = Vector2(button.position.x - (button.size.x * scale - button.size.x)/2, button.position.y - (button.size.y * scale - button.size.y)/2)
+#
+#func _downscale(button: TextureButton) -> void:
+	#button.scale = Vector2(1,1)
+	#button.position = Vector2(button.position.x + (button.size.x - button.size.x*0.9)/2, button.position.y + (button.size.y - button.size.y*0.9)/2)
 
 func _on_volume_slider_value_changed(value: float) -> void:
 	update_arrow_position(value)
@@ -40,14 +41,24 @@ func update_arrow_position(value):
 
 
 func _on_small_pressed() -> void:
+	print("small")
 	SettingsManager.change_screen_size("small")
+	SettingsManager.update_settings()
 
 func _on_medium_pressed() -> void:
+	print("mid")
 	SettingsManager.change_screen_size("mid")
-
+	SettingsManager.update_settings()
+	
 func _on_large_pressed() -> void:
+	print("large")
 	SettingsManager.change_screen_size("large")
+	SettingsManager.update_settings()
 	
 func _on_full_screen_pressed() -> void:
 	SettingsManager.toggle_fullscreen()
 	SettingsManager.update_settings()
+
+
+func _on_back_pressed() -> void:
+	self.visible = false

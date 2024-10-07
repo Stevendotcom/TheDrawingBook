@@ -30,25 +30,19 @@ func toggle_fullscreen() ->void:
 	fullscreen = !fullscreen
 
 func change_screen_size(screen_size: String) -> void:
-	if screen_sizes.find_key(screen_size):
+	if screen_sizes.get(screen_size):
 		screen_width = screen_sizes[screen_size][Axis.WIDTH]
 		screen_height = screen_sizes[screen_size][Axis.HEIGHT]
+		print(screen_width, "x", screen_height)
 
 func update_settings() -> void:
-	ProjectSettings.set_setting("display/window/size/viewport_height", screen_height)
-	ProjectSettings.set_setting("display/window/size/viewport_width", screen_width)
+	DisplayServer.window_set_size(Vector2(screen_width, screen_height))
 	
 	if fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
-	
-	#This doesn't work. The lines above this do
-	#ProjectSettings.set_setting(
-	#"display/window/size/window_mode",
-	#DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN if fullscreen else DisplayServer.WindowMode.WINDOW_MODE_WINDOWED
-	#)
-	
+
 	AudioServer.set_bus_volume_db(
 			AudioServer.get_bus_index("Master"),
 			linear_to_db(volume)
