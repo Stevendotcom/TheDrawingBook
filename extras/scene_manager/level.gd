@@ -3,6 +3,7 @@ class_name Level extends Control
 @export var scene_triggers:Array[SceneLoader]
 var data:LevelDataHandoff
 var is_enabled:bool = false
+@onready var buy_fx = preload("res://audio/vfx/buy_creature.wav")
 
 func _ready() -> void:
 	is_enabled = false
@@ -62,6 +63,10 @@ func _bought(base: int) -> void:
 	#probably a bad place to put it, but if there is no bottons there is no problem
 	#if enough ink
 	#subtract from ink
-	var monster: Node = EntityManager.new_monster(self)
+	var monster: Monster = EntityManager.new_monster(self)
+	monster.base = base
+	monster.level = 1
+	monster.evolution = 1
 	monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(base, 1,1)
 	monster.set_up()
+	AudioManager.play_fx(buy_fx)
