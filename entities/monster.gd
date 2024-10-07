@@ -6,7 +6,11 @@ var id: int
 var play_area_size: Vector2
 var play_area_pos: Vector2
 
-# Random movement
+@export var level: int
+@export var base: int
+@export var evolution: int
+
+#Random movement
 var speed: int = 150
 var time_to_move: float = 3.0
 var tolerance: float = 10.0
@@ -32,8 +36,11 @@ func _process(delta) -> void:
 	move(delta)
 	drag(delta)
 
-func set_up():
-	sprite.scale = Vector2(0.2, 0.2)
+func set_up(base: int, level: int, evolution: int):
+	self.level = level
+	self.base = base
+	self.evolution = evolution
+	sprite.scale = Vector2(0.2,0.2)
 	sprite_size = sprite.texture.get_size() * sprite.scale
 
 # Random movement

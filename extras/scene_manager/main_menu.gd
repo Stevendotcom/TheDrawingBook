@@ -30,9 +30,8 @@ func _on_play_button_mouse_exited() -> void:
 
 #OPTIONS
 func _on_options_button_button_up() -> void:
-	#TODO: Add volume export variable for FX
 	AudioManager.play_fx(transition_fx)
-	pass # Replace with function body.
+	$Settings.visible = true
 
 func _on_options_button_mouse_entered() -> void:
 	_upscale(options_button)

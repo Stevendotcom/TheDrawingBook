@@ -1,7 +1,6 @@
 extends Node
 
 const MONSTER = preload("res://entities/monster.tscn")
-const ICON = preload("res://extras/icon.svg") #TODO REMOVE
 
 var entity_id: int = 0
 var amount_entities: int = 0
