@@ -10,23 +10,39 @@ const amount_entities_max: int = 25
 @onready var merge_creature_1 = preload("res://audio/vfx/merge_creature_1.mp3")
 @onready var merge_creature_2 = preload("res://audio/vfx/merge_creature_2.mp3")
 @onready var merge_creature_3 = preload("res://audio/vfx/merge_creature_3.mp3")
-
 func new_monster(this_node: Node, is_null: bool) -> Node:
 	if is_null == true:
 		entities.push_back(null)
 		return
 	if amount_entities < amount_entities_max:
-		var instance : Node = MONSTER.instantiate()
+		var instance : Monster = MONSTER.instantiate() as Monster
 		entities.push_back(instance)
 		this_node.add_child(instance)
+		
+		# Set the monster's ID
 		instance.id = entity_id
-		instance.play_area_size = this_node.get_node("PlayableArea/Shape").get_shape().size
-		instance.play_area_pos = this_node.get_node("PlayableArea/Shape").position
+		
+		# Get the playable area size and position
+		var play_area_shape = this_node.get_node("PlayableArea/Shape").get_shape() as RectangleShape2D
+		instance.play_area_size = play_area_shape.extents * 2  # Shape extents are half the size, so multiply by 2
+		instance.play_area_pos = this_node.get_node("PlayableArea/Shape").global_position
+		
+		# Generate a random position within the playable area
+		var random_position = Vector2(
+			randf_range(instance.play_area_pos.x - instance.play_area_size.x / 2, instance.play_area_pos.x + instance.play_area_size.x / 2),
+			randf_range(instance.play_area_pos.y - instance.play_area_size.y / 2, instance.play_area_pos.y + instance.play_area_size.y / 2)
+		)
+		
+		# Set the monster's position
+		instance.position = random_position
+		
+		# Increment the ID and entity count
 		entity_id += 1
 		amount_entities += 1
 		
 		return instance
 	return null
+
 
 func clone_monster(this_node: Node, is_null: bool, new_entity_id: int) -> Node:
 	if is_null == true:
