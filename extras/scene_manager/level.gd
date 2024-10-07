@@ -75,10 +75,10 @@ func _disconnect_from_triggers() -> void:
 func _on_pause_button_up() -> void:
 	pass # Replace with function body.
 
-func _bought(base: int) -> void:
+func _bought(base: int, price: int) -> void:
 	#probably a bad place to put it, but if there is no bottons there is no problem
-	if has_enough_ink(1): #TODO, CHANGE WITH PRICE AND UPDATE SIGNALS
-		deduct_ink(1)
+	if has_enough_ink(price): 
+		deduct_ink(price)
 		var monster: Node = EntityManager.new_monster(self)
 		monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(base, 1,1)
 		monster.set_up(base, 1, 1)
@@ -93,8 +93,6 @@ func _get_ink_rate(creature: Node) -> float:
 
 	return base_ink * evolution_multiplier * rebirth_multiplier
 
-
-# This function is suposed to be where all the creatures are stored to loop each time
 func _get_total_ink_per_second() -> void:
 	for creature in EntityManager.entities:
 		total_ink += _get_ink_rate(creature)
