@@ -22,8 +22,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Left"):
 		scene_triggers[1]._on_left_click()
 		is_enabled = false
-	if Input.is_action_just_pressed("ui_accept"):
-		EntityManager.new_monster(self)
+
 
 func enter_level() -> void:
 	if data != null:
@@ -64,4 +63,5 @@ func _bought(base: int) -> void:
 	#if enough ink
 	#subtract from ink
 	var monster: Node = EntityManager.new_monster(self)
-	#monster.sprite = TextureManager.get_corresponding_texture(base, 0,0)
+	monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(base, 1,1)
+	monster.set_up()
