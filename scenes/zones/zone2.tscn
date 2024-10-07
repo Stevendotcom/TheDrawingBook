@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs1qln4dtbviw"]
+[gd_scene load_steps=10 format=3 uid="uid://bs1qln4dtbviw"]
 
 [ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_uo57c"]
 [ext_resource type="Texture2D" uid="uid://ymb8v3mnmiic" path="res://resources/sprites/Zone2/background.png" id="2_1e0k5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://resources/sprites/UI/arrow.png" id="3_gxtyl"]
 [ext_resource type="Texture2D" uid="uid://x0n6xt2q78i6" path="res://resources/sprites/UI/Boton tinta.png" id="4_hl2gy"]
 [ext_resource type="Script" path="res://extras/scene_manager/scene_loader.gd" id="4_xw36a"]
+[ext_resource type="Theme" uid="uid://bnok4x7uk7f8y" path="res://resources/ink_text.tres" id="5_3qejk"]
 [ext_resource type="Texture2D" uid="uid://cop1pk1wfy82t" path="res://resources/sprites/UI/Boton Pausa.png" id="5_ey0jt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpbqc"]
@@ -53,7 +54,25 @@ grow_horizontal = 0
 texture = ExtResource("4_hl2gy")
 expand_mode = 3
 
+[node name="InkAmount" type="RichTextLabel" parent="Ink"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.606
+anchor_right = 0.961
+anchor_bottom = 0.904
+offset_left = -2.385
+offset_top = -3.87
+offset_right = 3.45499
+offset_bottom = 4.92
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_3qejk")
+bbcode_enabled = true
+fit_content = true
+
 [node name="Pause" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 180.0
 offset_top = 156.0
 offset_right = 257.0
