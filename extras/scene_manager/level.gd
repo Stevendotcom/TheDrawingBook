@@ -45,9 +45,9 @@ func enter_level() -> void:
 		total_ink = data.total_ink
 		for entity in data.entities:
 			if entity == null:
-				EntityManager.clone_monster(self, true)
+				EntityManager.clone_monster(self, true, 0)
 				continue
-			var monster: Node = EntityManager.clone_monster(self, false)
+			var monster: Node = EntityManager.clone_monster(self, false, entity.id)
 			monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(entity.base, entity.level, entity.evolution)
 			monster.set_up(entity.base, entity.level, entity.evolution)
 	for trigger in scene_triggers:
@@ -94,7 +94,7 @@ func _bought(base: int, price: int) -> void:
 func _get_ink_rate(creature: Node) -> float:
 	# Base ink calculation
 	var base_ink = creature.level * creature.base
-	var evolution_multiplier = creature.evolution * 0.5 # Multipier to ramp up the ink production per evolution
+	var evolution_multiplier = creature.evolution * 1 # Multipier to ramp up the ink production per evolution
 
 	# Rebirth multiplier: 10% more ink per rebirth
 	var rebirth_multiplier = 1 + (rebirth_count * 0.10)
@@ -103,7 +103,7 @@ func _get_ink_rate(creature: Node) -> float:
 
 func _get_total_ink_per_second() -> void:
 	for creature in EntityManager.entities:
-		total_ink  = 100000#+= _get_ink_rate(creature)
+		total_ink += _get_ink_rate(creature)
 
 # Rebirth function to reset the game and increase the rebirth count
 func rebirth():

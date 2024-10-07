@@ -28,7 +28,7 @@ func new_monster(this_node: Node, is_null: bool) -> Node:
 		return instance
 	return null
 
-func clone_monster(this_node: Node, is_null: bool) -> Node:
+func clone_monster(this_node: Node, is_null: bool, new_entity_id: int) -> Node:
 	if is_null == true:
 		entities.push_back(null)
 		return
@@ -36,7 +36,7 @@ func clone_monster(this_node: Node, is_null: bool) -> Node:
 		var instance : Node = MONSTER.instantiate()
 		entities.push_back(instance)
 		this_node.add_child(instance)
-		instance.id = entity_id
+		instance.id = new_entity_id
 		instance.play_area_size = this_node.get_node("PlayableArea/Shape").get_shape().size
 		instance.play_area_pos = this_node.get_node("PlayableArea/Shape").position
 		
