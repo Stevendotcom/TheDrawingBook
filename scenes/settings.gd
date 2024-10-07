@@ -26,7 +26,7 @@ func _downscale(button: TextureButton) -> void:
 
 func _on_volume_slider_value_changed(value: float) -> void:
 	update_arrow_position(value)
-	SettingsManager.change_vol(value)
+	SettingsManager.change_vol(value/100)
 	SettingsManager.update_settings()
 
 func update_arrow_position(value):

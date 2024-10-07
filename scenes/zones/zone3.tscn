@@ -128,6 +128,7 @@ path_to_new_scene = "res://scenes/zones/zone2.tscn"
 
 [node name="PauseMenu" parent="." instance=ExtResource("9_e6knp")]
 visible = false
+top_level = true
 layout_mode = 1
 
 [connection signal="button_up" from="Pause" to="." method="_on_pause_button_up"]

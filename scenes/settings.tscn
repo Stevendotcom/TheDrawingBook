@@ -44,6 +44,7 @@ texture = ExtResource("3_56v8a")
 expand_mode = 3
 
 [node name="VolumeSlider" type="HSlider" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.325417
