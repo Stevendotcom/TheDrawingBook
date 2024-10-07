@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs1qln4dtbviw"]
+[gd_scene load_steps=9 format=3 uid="uid://bs1qln4dtbviw"]
 
 [ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_uo57c"]
 [ext_resource type="Texture2D" uid="uid://ymb8v3mnmiic" path="res://resources/sprites/Zone2/background.png" id="2_1e0k5"]
+[ext_resource type="Texture2D" uid="uid://do5xl8mcoso80" path="res://resources/sprites/UI/Decoraciones png.png" id="3_72jw7"]
 [ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://resources/sprites/UI/arrow.png" id="3_gxtyl"]
+[ext_resource type="Texture2D" uid="uid://x0n6xt2q78i6" path="res://resources/sprites/UI/Boton tinta.png" id="4_hl2gy"]
 [ext_resource type="Script" path="res://extras/scene_manager/scene_loader.gd" id="4_xw36a"]
+[ext_resource type="Texture2D" uid="uid://cop1pk1wfy82t" path="res://resources/sprites/UI/Boton Pausa.png" id="5_ey0jt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpbqc"]
 size = Vector2(1607, 824)
@@ -18,18 +21,46 @@ grow_vertical = 2
 script = ExtResource("1_uo57c")
 scene_triggers = [NodePath("VBoxContainer/HBoxContainer/Button"), NodePath("VBoxContainer2/HBoxContainer/Button")]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
 texture = ExtResource("2_1e0k5")
+
+[node name="Deco" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_72jw7")
+expand_mode = 3
+
+[node name="Ink" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -514.0
+offset_top = 85.0
+offset_right = -169.0
+offset_bottom = 230.0
+grow_horizontal = 0
+texture = ExtResource("4_hl2gy")
+expand_mode = 3
+
+[node name="Pause" type="TextureButton" parent="."]
+offset_left = 180.0
+offset_top = 156.0
+offset_right = 257.0
+offset_bottom = 238.0
+texture_normal = ExtResource("5_ey0jt")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

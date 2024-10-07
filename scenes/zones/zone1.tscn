@@ -23,7 +23,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ufm0"]
 size = Vector2(1607, 824)
 
-[node name="Zone2" type="Control" node_paths=PackedStringArray("scene_triggers")]
+[node name="Zone" type="Control" node_paths=PackedStringArray("scene_triggers")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
