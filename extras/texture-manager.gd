@@ -48,7 +48,7 @@ func init_array()->void:
 		textures.append([])
 		for bases in amount_bases:
 			textures[levels].append([])
-			for evoultions in amount_evolution:
+			for evolutions in amount_evolution:
 				textures[levels][bases].append([])
 
 func get_corresponding_texture(base: int, level: int, evolution: int):

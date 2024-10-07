@@ -5,6 +5,7 @@ class_name Level extends Control
 
 var data:LevelDataHandoff
 var is_enabled:bool = false
+@onready var buy_fx = preload("res://audio/vfx/buy_creature.wav")
 var rebirth_count: int = 0
 var timer: float
 var total_ink: float
@@ -78,10 +79,14 @@ func _on_pause_button_up() -> void:
 func _bought(base: int, price: int) -> void:
 	#probably a bad place to put it, but if there is no bottons there is no problem
 	if has_enough_ink(price): 
-		deduct_ink(price)
-		var monster: Node = EntityManager.new_monster(self)
-		monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(base, 1,1)
-		monster.set_up(base, 1, 1)
+  		deduct_ink(price)
+      var monster: Monster = EntityManager.new_monster(self)
+      monster.base = base
+      monster.level = 1
+      monster.evolution = 1
+      monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(base, 1,1)
+		  monster.set_up(base, 1, 1)
+	    AudioManager.play_fx(buy_fx)
 
 func _get_ink_rate(creature: Node) -> float:
 	# Base ink calculation
