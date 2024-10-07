@@ -15,10 +15,6 @@ var speed: int = 150
 var time_to_move: float = 3.0
 var tolerance: float = 10.0
 
-var evolution: int = 1 
-var level: int = 1     
-var base: int = 1       
-
 var position_target: Vector2 = Vector2()
 var sprite_size: Vector2 = Vector2()
 var time_waited: float = 0.0
@@ -94,7 +90,7 @@ func _input(event) -> void:
 					if area is Monster and area != self: 
 						other_id = area.id
 						break
-				if other_id != -1:  
+				if other_id != -1:
 					EntityManager.merge_monster(self, self.id, other_id)
 
 func drag(delta) -> void:

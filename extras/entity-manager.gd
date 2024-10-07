@@ -11,7 +11,10 @@ const amount_entities_max: int = 25
 @onready var merge_creature_2 = preload("res://audio/vfx/merge_creature_2.mp3")
 @onready var merge_creature_3 = preload("res://audio/vfx/merge_creature_3.mp3")
 
-func new_monster(this_node: Node) -> Node:
+func new_monster(this_node: Node, is_null: bool) -> Node:
+	if is_null == true:
+		entities.push_back(null)
+		return
 	if amount_entities < amount_entities_max:
 		var instance : Node = MONSTER.instantiate()
 		entities.push_back(instance)
@@ -21,6 +24,21 @@ func new_monster(this_node: Node) -> Node:
 		instance.play_area_pos = this_node.get_node("PlayableArea/Shape").position
 		entity_id += 1
 		amount_entities += 1
+		
+		return instance
+	return null
+
+func clone_monster(this_node: Node, is_null: bool) -> Node:
+	if is_null == true:
+		entities.push_back(null)
+		return
+	if amount_entities < amount_entities_max:
+		var instance : Node = MONSTER.instantiate()
+		entities.push_back(instance)
+		this_node.add_child(instance)
+		instance.id = entity_id
+		instance.play_area_size = this_node.get_node("PlayableArea/Shape").get_shape().size
+		instance.play_area_pos = this_node.get_node("PlayableArea/Shape").position
 		
 		return instance
 	return null

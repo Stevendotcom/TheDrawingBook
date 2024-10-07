@@ -16,7 +16,7 @@ func _ready() -> void:
 		trigger.hide()
 	if data == null:
 		ink_amount.set_text("[center]{0} oz[/center]".format(["0"]))
-		var monster = EntityManager.new_monster(self)
+		var monster = EntityManager.new_monster(self, false)
 		monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(1,1,1)
 		monster.set_up(1, 1, 1)
 		enter_level()
@@ -44,7 +44,10 @@ func enter_level() -> void:
 	if data != null:
 		total_ink = data.total_ink
 		for entity in data.entities:
-			var monster: Node = EntityManager.new_monster(self)
+			if entity == null:
+				EntityManager.clone_monster(self, true)
+				continue
+			var monster: Node = EntityManager.clone_monster(self, false)
 			monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(entity.base, entity.level, entity.evolution)
 			monster.set_up(entity.base, entity.level, entity.evolution)
 	for trigger in scene_triggers:
@@ -79,14 +82,14 @@ func _on_pause_button_up() -> void:
 func _bought(base: int, price: int) -> void:
 	#probably a bad place to put it, but if there is no bottons there is no problem
 	if has_enough_ink(price): 
-  		deduct_ink(price)
-      var monster: Monster = EntityManager.new_monster(self)
-      monster.base = base
-      monster.level = 1
-      monster.evolution = 1
-      monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(base, 1,1)
-		  monster.set_up(base, 1, 1)
-	    AudioManager.play_fx(buy_fx)
+		deduct_ink(price)
+		var monster: Monster = EntityManager.new_monster(self, false)
+		monster.base = base
+		monster.level = 1
+		monster.evolution = 1
+		monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(base, 1,1)
+		monster.set_up(base, 1, 1)
+		AudioManager.play_fx(buy_fx)
 
 func _get_ink_rate(creature: Node) -> float:
 	# Base ink calculation
@@ -100,7 +103,7 @@ func _get_ink_rate(creature: Node) -> float:
 
 func _get_total_ink_per_second() -> void:
 	for creature in EntityManager.entities:
-		total_ink += _get_ink_rate(creature)
+		total_ink  = 100000#+= _get_ink_rate(creature)
 
 # Rebirth function to reset the game and increase the rebirth count
 func rebirth():
