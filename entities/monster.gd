@@ -7,6 +7,10 @@ var id: int
 var play_area_size: Vector2
 var play_area_pos: Vector2
 
+@export var level: int
+@export var base: int
+@export var evolution: int
+
 #Random movement
 var speed: int = 300
 var time_to_move: float = 3.0
