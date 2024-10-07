@@ -1,13 +1,13 @@
 class_name Level extends Control
 
 @export var scene_triggers:Array[SceneLoader]
-var total_ink: float
 @onready var ink_amount: RichTextLabel = $Ink/InkAmount
 
 var data:LevelDataHandoff
 var is_enabled:bool = false
-var rebirth_count = 0
+var rebirth_count: int = 0
 var timer: float
+var total_ink: float
 
 func _ready() -> void:
 	is_enabled = false
