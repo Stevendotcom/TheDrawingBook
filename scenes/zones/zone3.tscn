@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://efhqdcdes37t"]
 
 [ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_cmiqf"]
-[ext_resource type="Texture2D" uid="uid://ymb8v3mnmiic" path="res://resources/sprites/Zone2/background.png" id="2_2ajbk"]
+[ext_resource type="Texture2D" uid="uid://b72kbscy4occ7" path="res://resources/sprites/Zone3/background.png" id="2_scbd2"]
 [ext_resource type="Texture2D" uid="uid://do5xl8mcoso80" path="res://resources/sprites/UI/Decoraciones png.png" id="3_nso6q"]
 [ext_resource type="Texture2D" uid="uid://x0n6xt2q78i6" path="res://resources/sprites/UI/Boton tinta.png" id="4_lky2j"]
 [ext_resource type="Script" path="res://extras/scene_manager/scene_loader.gd" id="4_ybew8"]
@@ -29,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_2ajbk")
+texture = ExtResource("2_scbd2")
 
 [node name="Deco" type="TextureRect" parent="."]
 layout_mode = 1

@@ -94,7 +94,7 @@ func _bought(base: int, price: int) -> void:
 func _get_ink_rate(creature: Node) -> float:
 	# Base ink calculation
 	var base_ink = creature.level * creature.base
-	var evolution_multiplier = creature.evolution * 1 # Multipier to ramp up the ink production per evolution
+	var evolution_multiplier = creature.evolution * 2 # Multipier to ramp up the ink production per evolution
 
 	# Rebirth multiplier: 10% more ink per rebirth
 	var rebirth_multiplier = 1 + (rebirth_count * 0.10)
@@ -103,6 +103,8 @@ func _get_ink_rate(creature: Node) -> float:
 
 func _get_total_ink_per_second() -> void:
 	for creature in EntityManager.entities:
+		if creature == null:
+			continue
 		total_ink += _get_ink_rate(creature)
 
 # Rebirth function to reset the game and increase the rebirth count
