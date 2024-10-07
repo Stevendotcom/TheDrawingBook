@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://cywo1ombjlx4m"]
+[gd_scene load_steps=21 format=3 uid="uid://cywo1ombjlx4m"]
 
-[ext_resource type="Texture2D" uid="uid://b421agxh8gtqx" path="res://sprites/Zone1/background.png" id="1_8wl7j"]
+[ext_resource type="Texture2D" uid="uid://b421agxh8gtqx" path="res://resources/sprites/Zone1/background.png" id="1_8wl7j"]
 [ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_81n2d"]
-[ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://sprites/UI/arrow.png" id="2_5nmcq"]
+[ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://resources/sprites/UI/arrow.png" id="2_5nmcq"]
 [ext_resource type="Script" path="res://extras/scene_manager/scene_loader.gd" id="4_euxse"]
+[ext_resource type="Texture2D" uid="uid://do5xl8mcoso80" path="res://resources/sprites/UI/Decoraciones png.png" id="5_27r67"]
+[ext_resource type="Texture2D" uid="uid://x0n6xt2q78i6" path="res://resources/sprites/UI/Boton tinta.png" id="6_iwdv0"]
+[ext_resource type="Texture2D" uid="uid://cop1pk1wfy82t" path="res://resources/sprites/UI/Boton Pausa.png" id="7_8hvc2"]
+[ext_resource type="Texture2D" uid="uid://c0y5jlg2d141t" path="res://resources/cards/Card-1.png" id="8_c5fm6"]
+[ext_resource type="Texture2D" uid="uid://b5hhk0mmpomm4" path="res://resources/cards/Card-2.png" id="9_hnqlg"]
+[ext_resource type="Texture2D" uid="uid://dqngq1eggr5wl" path="res://resources/cards/Card-3.png" id="10_auff4"]
+[ext_resource type="Texture2D" uid="uid://6ampobkwirj2" path="res://resources/cards/Card-4.png" id="11_8uktv"]
+[ext_resource type="Texture2D" uid="uid://cuuxr7v5e4ddh" path="res://resources/cards/Card-5.png" id="12_qjitw"]
+[ext_resource type="Texture2D" uid="uid://bravmg8gug1i" path="res://resources/cards/Card-6.png" id="13_ndcyf"]
+[ext_resource type="Texture2D" uid="uid://cji8n2frskum6" path="res://resources/cards/Card-7.png" id="14_4hlql"]
+[ext_resource type="Texture2D" uid="uid://8xxujyh74yi3" path="res://resources/cards/Card-8.png" id="15_v3o56"]
+[ext_resource type="Texture2D" uid="uid://cjxsvsvab0dgj" path="res://resources/cards/Card-9.png" id="16_xr33x"]
+[ext_resource type="Texture2D" uid="uid://ccthtr8xvh5gd" path="res://resources/cards/Card-10.png" id="17_f3y5o"]
+[ext_resource type="Texture2D" uid="uid://gfku8meg325y" path="res://resources/cards/Card-11.png" id="18_t75s4"]
+[ext_resource type="Texture2D" uid="uid://dlxlb0cvl2kph" path="res://resources/cards/Card-12.png" id="19_omgx7"]
 
-[node name="Zone" type="Control" node_paths=PackedStringArray("scene_triggers")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ufm0"]
+size = Vector2(1607, 824)
+
+[node name="Zone2" type="Control" node_paths=PackedStringArray("scene_triggers")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,18 +33,158 @@ grow_vertical = 2
 script = ExtResource("1_81n2d")
 scene_triggers = [NodePath("VBoxContainer/HBoxContainer/Button"), NodePath("VBoxContainer2/HBoxContainer/Button")]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
 texture = ExtResource("1_8wl7j")
+
+[node name="Deco" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_27r67")
+expand_mode = 3
+
+[node name="Ink" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -514.0
+offset_top = 85.0
+offset_right = -169.0
+offset_bottom = 230.0
+grow_horizontal = 0
+texture = ExtResource("6_iwdv0")
+expand_mode = 3
+
+[node name="Pause" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 156.0
+offset_right = 257.0
+offset_bottom = 238.0
+texture_normal = ExtResource("7_8hvc2")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlayableArea" type="Area2D" parent="."]
+position = Vector2(135, 105)
+collision_layer = 2
+
+[node name="Shape" type="CollisionShape2D" parent="PlayableArea"]
+position = Vector2(834, 445)
+shape = SubResource("RectangleShape2D_7ufm0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.759
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.279907
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+
+[node name="Card1" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("8_c5fm6")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card2" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("9_hnqlg")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card3" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("10_auff4")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card4" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("11_8uktv")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card5" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("12_qjitw")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card6" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("13_ndcyf")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card7" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("14_4hlql")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card8" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("15_v3o56")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card9" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("16_xr33x")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card10" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("17_f3y5o")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card11" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("18_t75s4")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Card12" type="TextureButton" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("19_omgx7")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -85,5 +243,18 @@ entry_direction = 2
 transition_type = "wipe"
 path_to_new_scene = "res://scenes/zones/zone4.tscn"
 
+[connection signal="button_up" from="Pause" to="." method="_on_pause_button_up"]
+[connection signal="button_up" from="HBoxContainer/Card1" to="." method="_bought" binds= [1]]
+[connection signal="button_up" from="HBoxContainer/Card2" to="." method="_bought" binds= [2]]
+[connection signal="button_up" from="HBoxContainer/Card3" to="." method="_bought" binds= [3]]
+[connection signal="button_up" from="HBoxContainer/Card4" to="." method="_bought" binds= [4]]
+[connection signal="button_up" from="HBoxContainer/Card5" to="." method="_bought" binds= [5]]
+[connection signal="button_up" from="HBoxContainer/Card6" to="." method="_bought" binds= [6]]
+[connection signal="button_up" from="HBoxContainer/Card7" to="." method="_bought" binds= [7]]
+[connection signal="button_up" from="HBoxContainer/Card8" to="." method="_bought" binds= [8]]
+[connection signal="button_up" from="HBoxContainer/Card9" to="." method="_bought" binds= [9]]
+[connection signal="button_up" from="HBoxContainer/Card10" to="." method="_bought" binds= [10]]
+[connection signal="button_up" from="HBoxContainer/Card11" to="." method="_bought" binds= [11]]
+[connection signal="button_up" from="HBoxContainer/Card12" to="." method="_bought" binds= [12]]
 [connection signal="button_up" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_left_click"]
 [connection signal="button_up" from="VBoxContainer2/HBoxContainer/Button" to="VBoxContainer2/HBoxContainer/Button" method="_on_left_click"]

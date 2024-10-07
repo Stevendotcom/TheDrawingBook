@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnfsigihokg8c"]
 
 [ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_7nril"]
-[ext_resource type="Texture2D" uid="uid://cui8hwt76pxkf" path="res://sprites/Zone4/background.png" id="2_wwhec"]
-[ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://sprites/UI/arrow.png" id="3_8qfto"]
+[ext_resource type="Texture2D" uid="uid://cui8hwt76pxkf" path="res://resources/sprites/Zone4/background.png" id="2_wwhec"]
+[ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://resources/sprites/UI/arrow.png" id="3_8qfto"]
 [ext_resource type="Script" path="res://extras/scene_manager/scene_loader.gd" id="4_j2gt4"]
 
 [node name="Zone" type="Control" node_paths=PackedStringArray("scene_triggers")]
