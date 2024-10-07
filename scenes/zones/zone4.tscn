@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnfsigihokg8c"]
+[gd_scene load_steps=10 format=3 uid="uid://dnfsigihokg8c"]
 
 [ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_7nril"]
-[ext_resource type="Texture2D" uid="uid://cui8hwt76pxkf" path="res://sprites/Zone4/background.png" id="2_wwhec"]
-[ext_resource type="Texture2D" uid="uid://bj4ux0rjf7wsy" path="res://sprites/UI/arrow.png" id="3_8qfto"]
+[ext_resource type="Texture2D" uid="uid://cui8hwt76pxkf" path="res://resources/sprites/Zone4/background.png" id="2_wwhec"]
+[ext_resource type="Texture2D" uid="uid://do5xl8mcoso80" path="res://resources/sprites/UI/Decoraciones png.png" id="3_tjus8"]
+[ext_resource type="Texture2D" uid="uid://x0n6xt2q78i6" path="res://resources/sprites/UI/Boton tinta.png" id="4_6vhkg"]
 [ext_resource type="Script" path="res://extras/scene_manager/scene_loader.gd" id="4_j2gt4"]
+[ext_resource type="Theme" uid="uid://bnok4x7uk7f8y" path="res://resources/ink_text.tres" id="5_0th1d"]
+[ext_resource type="Texture2D" uid="uid://cop1pk1wfy82t" path="res://resources/sprites/UI/Boton Pausa.png" id="5_2dxyb"]
+[ext_resource type="Texture2D" uid="uid://bimvcxwnb5lr6" path="res://resources/Flecha.png" id="7_0m2ah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_65yfi"]
+size = Vector2(1607, 824)
 
 [node name="Zone" type="Control" node_paths=PackedStringArray("scene_triggers")]
 layout_mode = 3
@@ -13,77 +20,108 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7nril")
-scene_triggers = [NodePath("VBoxContainer/HBoxContainer/Button"), NodePath("VBoxContainer2/HBoxContainer/Button")]
+scene_triggers = [NodePath("Button"), NodePath("Button2")]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
 texture = ExtResource("2_wwhec")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Deco" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 6
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tjus8")
+expand_mode = 3
+
+[node name="Ink" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
 anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -514.0
+offset_top = 85.0
+offset_right = -169.0
+offset_bottom = 230.0
+grow_horizontal = 0
+texture = ExtResource("4_6vhkg")
+expand_mode = 3
+
+[node name="InkAmount" type="RichTextLabel" parent="Ink"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.606
+anchor_right = 0.961
+anchor_bottom = 0.904
+offset_left = -2.385
+offset_top = -3.87
+offset_right = 3.45499
+offset_bottom = 4.92
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_0th1d")
+bbcode_enabled = true
+fit_content = true
+
+[node name="Pause" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 156.0
+offset_right = 257.0
+offset_bottom = 238.0
+texture_normal = ExtResource("5_2dxyb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PlayableArea" type="Area2D" parent="."]
+position = Vector2(135, 105)
+collision_layer = 2
+
+[node name="Shape" type="CollisionShape2D" parent="PlayableArea"]
+position = Vector2(834, 445)
+shape = SubResource("RectangleShape2D_65yfi")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -95.0
-offset_top = -153.0
-offset_right = 499.0
-offset_bottom = 1944.0
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(0.15, 0.15)
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_direction = 2
-layout_mode = 2
-alignment = 2
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("3_8qfto")
+offset_left = 1729.0
+offset_top = 71.0
+offset_right = -72.0
+offset_bottom = 200.0
+rotation = -1.5708
+icon = ExtResource("7_0m2ah")
 flat = true
 script = ExtResource("4_j2gt4")
 entry_direction = 1
 transition_type = "wipe"
 path_to_new_scene = "res://scenes/zones/zone1.tscn"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 4
+[node name="Button2" type="Button" parent="."]
+layout_mode = 2
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 105.0
-offset_top = 160.0
-offset_right = 699.0
-offset_bottom = 2257.0
-grow_vertical = 2
-rotation = 3.14159
-scale = Vector2(0.15, 0.15)
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
-layout_mode = 2
-alignment = 2
-
-[node name="Button" type="Button" parent="VBoxContainer2/HBoxContainer"]
-layout_mode = 2
-icon = ExtResource("3_8qfto")
+offset_left = 191.0
+offset_top = -66.0
+offset_right = -1610.0
+offset_bottom = 63.0
+rotation = 1.5708
+icon = ExtResource("7_0m2ah")
 flat = true
 script = ExtResource("4_j2gt4")
 entry_direction = 2
 transition_type = "wipe"
 path_to_new_scene = "res://scenes/zones/zone3.tscn"
 
-[connection signal="button_up" from="VBoxContainer/HBoxContainer/Button" to="VBoxContainer/HBoxContainer/Button" method="_on_left_click"]
-[connection signal="button_up" from="VBoxContainer2/HBoxContainer/Button" to="VBoxContainer2/HBoxContainer/Button" method="_on_left_click"]
+[connection signal="button_up" from="Button" to="Button" method="_on_left_click"]
+[connection signal="button_up" from="Button2" to="Button2" method="_on_left_click"]

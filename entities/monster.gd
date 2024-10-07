@@ -1,6 +1,15 @@
 
 extends Area2D
-@onready var sprite = $MonsterSprite
+var id: int
+
+@onready var sprite: Sprite2D = $MonsterSprite
+
+var play_area_size: Vector2
+var play_area_pos: Vector2
+
+@export var level: int
+@export var base: int
+@export var evolution: int
 
 #Random movement
 var speed: int = 300
@@ -18,15 +27,18 @@ var mouse_offset: Vector2 = Vector2() #center mouse on click
 var is_dragging: bool = false
 
 func _ready() -> void:
-	if sprite.texture:
-		sprite_size = sprite.texture.get_size() * sprite.scale
-	else:
-		print("Error: The sprite doesn't have a texture assigned")
+		pass
 
 func _process(delta) -> void:
 	move(delta)
 	drag(delta)
 
+func set_up(base: int, level: int, evolution: int):
+	self.level = level
+	self.base = base
+	self.evolution = evolution
+	sprite.scale = Vector2(0.2,0.2)
+	sprite_size = sprite.texture.get_size() * sprite.scale
 
 #Random movement
 func move(delta) -> void:
@@ -39,8 +51,8 @@ func move(delta) -> void:
 
 func generate_random_position() -> void:
 	position_target = Vector2(
-		randf_range(sprite_size.x / 2 + tolerance, get_viewport().size.x - sprite_size.x / 2 - tolerance),
-		randf_range(sprite_size.y / 2 + tolerance, get_viewport().size.y - sprite_size.y / 2 - tolerance)
+		randf_range(play_area_pos.x / 2 + tolerance, play_area_size.x - sprite_size.x / 2 - tolerance),
+		randf_range(play_area_pos.y / 2 + tolerance, play_area_size.y - sprite_size.y / 2 - tolerance)
 	)
 	#print("Target position: ", position_target)
 	is_moving = true
@@ -61,7 +73,7 @@ func _input(event) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT: 
 		if event.pressed: #User Left Clicks
 			var local_mouse_pos: Vector2 = to_local(event.position) #Save mouse position
-			if sprite.get_rect().has_point(local_mouse_pos): #The click is on the monster
+			if $MonsterCollision.shape.get_rect().has_point(local_mouse_pos): #The click is on the monster
 				is_dragging = true
 				mouse_offset = get_global_mouse_position()-global_position
 		else:

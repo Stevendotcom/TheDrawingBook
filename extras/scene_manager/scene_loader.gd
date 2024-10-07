@@ -6,8 +6,11 @@ signal player_entered_trigger(scene_loader:SceneLoader,transition_type:String)
 @export_enum("fade_to_black","wipe_to_right", "wipe_to_left", "wipe") var transition_type:String
 @export var path_to_new_scene:String
 var is_enabled:bool = true
+@onready var transition_fx = preload("res://audio/vfx/scene_transition.mp3")
 
 func _on_left_click() -> void:
+	#TODO: Add volume export variable for FX
+	AudioManager.play_fx(transition_fx)
 	if not is_enabled:
 		return
 		
