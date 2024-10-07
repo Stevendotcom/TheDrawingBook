@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://siv05agkokfs"]
+[gd_scene load_steps=8 format=3 uid="uid://siv05agkokfs"]
 
 [ext_resource type="Script" path="res://extras/scene_manager/main_menu.gd" id="1_ih5gw"]
 [ext_resource type="Texture2D" uid="uid://b1jv8ybrkjcew" path="res://resources/Main Menu/MainMenu.jpg" id="2_5gti7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b1fw05e17mhd6" path="res://resources/Main Menu/Botones/Options.png" id="4_33ugm"]
 [ext_resource type="Texture2D" uid="uid://cybiuhv42l11s" path="res://resources/Main Menu/Botones/credits.png" id="5_81yjs"]
 [ext_resource type="Texture2D" uid="uid://c4dtqrc5i4ww3" path="res://resources/Main Menu/Botones/Exit.png" id="6_1t2k5"]
+[ext_resource type="PackedScene" uid="uid://cjn30ilx82o2o" path="res://scenes/settings.tscn" id="7_ywcyv"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -91,6 +92,10 @@ theme_override_constants/margin_bottom = 86
 [node name="MarginContainer" type="MarginContainer" parent="BoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_right = 785
+
+[node name="Settings" parent="." instance=ExtResource("7_ywcyv")]
+visible = false
+layout_mode = 1
 
 [connection signal="button_up" from="BoxContainer/HBoxContainer/Buttons/PlayButton" to="." method="_on_play_button_up"]
 [connection signal="mouse_entered" from="BoxContainer/HBoxContainer/Buttons/PlayButton" to="." method="_on_play_button_mouse_entered"]

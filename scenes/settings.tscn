@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://m4qcugqh2cod"]
+[gd_scene load_steps=10 format=3 uid="uid://cjn30ilx82o2o"]
 
 [ext_resource type="Script" path="res://scenes/settings.gd" id="1_ky3t2"]
 [ext_resource type="Texture2D" uid="uid://dajx28th0bd5t" path="res://sprites/Settings/Settings.png" id="3_56v8a"]
@@ -18,7 +18,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ky3t2")
-metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.368627)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -26,12 +34,14 @@ anchors_preset = -1
 anchor_left = 0.0333333
 anchor_right = 0.966667
 anchor_bottom = 1.0
+offset_left = -60.9999
+offset_top = 5.0
+offset_right = -60.9999
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_56v8a")
 expand_mode = 3
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="VolumeSlider" type="HSlider" parent="."]
 layout_mode = 1
@@ -40,14 +50,15 @@ anchor_left = 0.325417
 anchor_top = 0.326
 anchor_right = 0.735333
 anchor_bottom = 0.37
-offset_left = -0.800049
-offset_top = -0.0800171
-offset_right = 0.159912
-offset_bottom = 0.399994
+offset_left = -61.8
+offset_top = 4.91998
+offset_right = -60.8401
+offset_bottom = 5.39999
+grow_horizontal = 2
+grow_vertical = 2
 step = 10.0
 scrollable = false
 ticks_on_borders = true
-metadata/_edit_use_anchors_ = true
 
 [node name="Arrow" type="TextureRect" parent="."]
 layout_mode = 1
@@ -56,13 +67,14 @@ anchor_left = 0.322313
 anchor_top = 0.267889
 anchor_right = 0.338812
 anchor_bottom = 0.303741
-offset_left = 0.159973
-offset_top = -0.320007
-offset_right = -0.520081
-offset_bottom = -0.0399475
+offset_left = -60.84
+offset_top = 4.67999
+offset_right = -61.52
+offset_bottom = 4.96005
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_56ual")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="Small" type="TextureButton" parent="."]
 layout_mode = 1
@@ -71,13 +83,14 @@ anchor_left = 0.299917
 anchor_top = 0.554519
 anchor_right = 0.342917
 anchor_bottom = 0.634519
-offset_left = -0.840027
-offset_top = 0.119995
-offset_right = 42.6
-offset_bottom = 43.7199
+offset_left = -61.84
+offset_top = 5.12
+offset_right = -18.4
+offset_bottom = 48.72
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.66, 0.66)
 texture_normal = ExtResource("5_3psfq")
-metadata/_edit_use_anchors_ = true
 
 [node name="Medium" type="TextureButton" parent="."]
 layout_mode = 1
@@ -86,14 +99,15 @@ anchor_left = 0.394604
 anchor_top = 0.566296
 anchor_right = 0.451604
 anchor_bottom = 0.675296
-offset_left = -0.639404
-offset_top = 0.400085
-offset_right = 48.9205
-offset_bottom = 51.6801
+offset_left = -61.6393
+offset_top = 5.40009
+offset_right = -12.0794
+offset_bottom = 56.6801
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.695, 0.695)
 texture_normal = ExtResource("6_pi6hi")
 ignore_texture_size = true
-metadata/_edit_use_anchors_ = true
 
 [node name="Large" type="TextureButton" parent="."]
 layout_mode = 1
@@ -102,13 +116,14 @@ anchor_left = 0.508708
 anchor_top = 0.56437
 anchor_right = 0.578417
 anchor_bottom = 0.68563
-offset_left = 0.279907
-offset_top = -0.519958
-offset_right = 16.4399
-offset_bottom = 15.5201
+offset_left = -60.72
+offset_top = 4.48004
+offset_right = -44.5599
+offset_bottom = 20.5201
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.895, 0.895)
 texture_normal = ExtResource("7_1u16w")
-metadata/_edit_use_anchors_ = true
 
 [node name="FullScreen" type="TextureButton" parent="."]
 layout_mode = 1
@@ -117,21 +132,25 @@ anchor_left = 0.635188
 anchor_top = 0.565259
 anchor_right = 0.712542
 anchor_bottom = 0.711852
-offset_left = -0.560059
-offset_top = 0.519958
-offset_right = -13.0801
-offset_bottom = -13.8
+offset_left = -61.5599
+offset_top = 5.51996
+offset_right = -74.0797
+offset_bottom = -8.79999
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("8_lyun1")
-metadata/_edit_use_anchors_ = true
 
 [node name="Back" type="TextureButton" parent="."]
 layout_mode = 2
 anchor_left = 0.847
 anchor_right = 1.0
 anchor_bottom = 0.195
-offset_left = 0.76001
-offset_right = 137.0
-offset_bottom = 99.4
+offset_left = -60.2399
+offset_top = 5.0
+offset_right = 76.0001
+offset_bottom = 104.4
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.68, 0.68)
 texture_normal = ExtResource("9_fe8a0")
 texture_hover = ExtResource("9_5ecoy")

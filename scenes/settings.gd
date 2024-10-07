@@ -7,7 +7,6 @@ extends Control
 @onready var full_screen: TextureButton = $FullScreen
 
 
-
 var arrow_original_position : Vector2
 
 
