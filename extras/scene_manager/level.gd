@@ -1,7 +1,7 @@
 class_name Level extends Control
 
 @export var scene_triggers:Array[SceneLoader]
-@export var total_ink: float
+var total_ink: float
 @onready var ink_amount: RichTextLabel = $Ink/InkAmount
 
 var data:LevelDataHandoff
@@ -14,6 +14,10 @@ func _ready() -> void:
 	for trigger in scene_triggers:
 		trigger.hide()
 	if data == null:
+		ink_amount.set_text("[center]{0} oz[/center]".format(["0"]))
+		var monster = EntityManager.new_monster(self)
+		monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(1,1,1)
+		monster.set_up(1, 1, 1)
 		enter_level()
 
 func _process(_delta: float) -> void:
@@ -30,7 +34,7 @@ func _process(_delta: float) -> void:
 	
 	timer += _delta	
 	if timer > 1:
-		total_ink = _get_total_ink_per_second()
+		_get_total_ink_per_second()
 		ink_amount.set_text("[center]{0} oz[/center]".format([total_ink]))
 		timer = 0
 
@@ -39,7 +43,9 @@ func enter_level() -> void:
 	if data != null:
 		total_ink = data.total_ink
 		for entity in data.entities:
-			EntityManager.new_monster(self)
+			var monster: Node = EntityManager.new_monster(self)
+			monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(entity.base, entity.level, entity.evolution)
+			monster.set_up(entity.base, entity.level, entity.evolution)
 	for trigger in scene_triggers:
 		trigger.show()
 		
@@ -89,11 +95,9 @@ func _get_ink_rate(creature: Node) -> float:
 
 
 # This function is suposed to be where all the creatures are stored to loop each time
-func _get_total_ink_per_second() -> float:
-	var local_total_ink = 0.0
+func _get_total_ink_per_second() -> void:
 	for creature in EntityManager.entities:
-		local_total_ink += _get_ink_rate(creature)
-	return local_total_ink
+		total_ink += _get_ink_rate(creature)
 
 # Rebirth function to reset the game and increase the rebirth count
 func rebirth():
