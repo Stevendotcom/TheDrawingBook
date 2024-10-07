@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="The Drawing Book"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
-run/main_scene="res://scenes/main_menu.tscn"
 
 [autoload]
 
@@ -22,7 +22,6 @@ AudioManager="*res://scenes/audio_manager.tscn"
 EntityManager="*res://extras/entity-manager.gd"
 TextureManager="*res://extras/texture-manager.gd"
 SceneManager="*res://Autoloads/SceneManager.gd"
-
 
 [display]
 
