@@ -9,7 +9,7 @@ signal transition_in_complete
 var starting_animation_name:String
 
 func _ready() -> void:
-	progress_bar.visible = false
+	#progress_bar.visible = false
 	pass
 
 func start_transition(animation_name:String) -> void:
