@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://m4qcugqh2cod"]
+[gd_scene load_steps=10 format=3 uid="uid://m4qcugqh2cod"]
 
 [ext_resource type="Script" path="res://scenes/settings.gd" id="1_ky3t2"]
 [ext_resource type="Script" path="res://extras/settings-manager.gd" id="2_sbdt3"]
 [ext_resource type="Texture2D" uid="uid://dajx28th0bd5t" path="res://sprites/Settings/Settings.png" id="3_56v8a"]
 [ext_resource type="Texture2D" uid="uid://byllkwadp0pc3" path="res://sprites/Settings/Buttons/Flecha.png" id="4_56ual"]
-[ext_resource type="Texture2D" uid="uid://bxuwa4uxyflgx" path="res://sprites/Settings/Buttons/Boton_Expandir.png" id="4_f8ifo"]
-[ext_resource type="Texture2D" uid="uid://btdg0vmememgv" path="res://sprites/Settings/Buttons/Boton_Contraer.png" id="5_m66ao"]
+[ext_resource type="Texture2D" uid="uid://ort5odu2yb8j" path="res://sprites/Settings/Buttons/Boton Small.png" id="5_3psfq"]
+[ext_resource type="Texture2D" uid="uid://du6mewva6tih" path="res://sprites/Settings/Buttons/Boton Medium.png" id="6_pi6hi"]
+[ext_resource type="Texture2D" uid="uid://cqbq38vlqu64n" path="res://sprites/Settings/Buttons/Boton Large.png" id="7_1u16w"]
+[ext_resource type="Texture2D" uid="uid://clfb6g0m1ip75" path="res://sprites/Settings/Buttons/Boton Full Screen.png" id="8_lyun1"]
+[ext_resource type="Texture2D" uid="uid://omckh80tug1c" path="res://sprites/Settings/Buttons/Bottom_Back_Pause_Menu.png" id="9_fe8a0"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -18,13 +22,15 @@ metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.0333333
+anchor_right = 0.966667
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_56v8a")
 expand_mode = 3
+metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="SettingsManager" type="Node" parent="."]
@@ -33,61 +39,111 @@ script = ExtResource("2_sbdt3")
 [node name="VolumeSlider" type="HSlider" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.312
-anchor_top = 0.385
-anchor_right = 0.7
-anchor_bottom = 0.43
-offset_left = -0.0400391
-offset_top = 0.199982
-offset_right = -3.00012
-offset_bottom = -0.399994
+anchor_left = 0.325417
+anchor_top = 0.326
+anchor_right = 0.735333
+anchor_bottom = 0.37
+offset_left = -0.800049
+offset_top = -0.0800171
+offset_right = 0.159912
+offset_bottom = 0.399994
 step = 10.0
 scrollable = false
 ticks_on_borders = true
-metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
 
-[node name="Arrow" type="TextureRect" parent="VolumeSlider"]
+[node name="Arrow" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.038
-anchor_top = -2.354
-anchor_right = 0.063
-anchor_bottom = -0.729
-offset_left = 0.196001
-offset_top = -0.00799561
-offset_right = 0.253998
-offset_bottom = -0.00799942
+anchor_left = 0.322313
+anchor_top = 0.267889
+anchor_right = 0.338812
+anchor_bottom = 0.303741
+offset_left = 0.159973
+offset_top = -0.320007
+offset_right = -0.520081
+offset_bottom = -0.0399475
 texture = ExtResource("4_56ual")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Small" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.342
-anchor_right = 0.625
-anchor_bottom = 1.0
-offset_left = -0.640015
-metadata/_edit_lock_ = true
+anchor_left = 0.300438
+anchor_top = 0.548037
+anchor_right = 0.343438
+anchor_bottom = 0.628037
+offset_left = -0.840027
+offset_top = 0.119995
+offset_right = 42.6
+offset_bottom = 43.7199
+scale = Vector2(0.66, 0.66)
+texture_normal = ExtResource("5_3psfq")
+metadata/_edit_use_anchors_ = true
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 725
-metadata/_edit_lock_ = true
+[node name="Medium" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.391292
+anchor_top = 0.569889
+anchor_right = 0.449292
+anchor_bottom = 0.678889
+offset_left = 0.719971
+offset_top = 0.52002
+offset_right = 48.3599
+offset_bottom = 51.8
+scale = Vector2(0.695, 0.695)
+texture_normal = ExtResource("6_pi6hi")
+ignore_texture_size = true
+metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 160
-alignment = 1
-metadata/_edit_lock_ = true
+[node name="Large" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.510792
+anchor_top = 0.563444
+anchor_right = 0.5805
+anchor_bottom = 0.684704
+offset_left = 0.279907
+offset_top = -0.519958
+offset_right = 16.4399
+offset_bottom = 15.5201
+scale = Vector2(0.895, 0.895)
+texture_normal = ExtResource("7_1u16w")
+metadata/_edit_use_anchors_ = true
 
-[node name="WindowMode" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("5_m66ao")
+[node name="FullScreen" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.633625
+anchor_top = 0.562482
+anchor_right = 0.714625
+anchor_bottom = 0.716482
+offset_left = -0.560059
+offset_top = 0.519958
+offset_right = -13.0801
+offset_bottom = -13.8
+scale = Vector2(1.09, 1.09)
+texture_normal = ExtResource("8_lyun1")
+metadata/_edit_use_anchors_ = true
 
-[node name="FullScreen" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("4_f8ifo")
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.829333
+anchor_top = 0.718815
+anchor_right = 1.00133
+anchor_bottom = 1.00581
+offset_left = -0.320007
+offset_top = -0.320007
+offset_right = 0.439941
+offset_bottom = -0.280029
+texture_normal = ExtResource("9_fe8a0")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/WindowMode" to="." method="_on_window_mode_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/FullScreen" to="." method="_on_full_screen_pressed"]
+[connection signal="pressed" from="Small" to="." method="_on_small_pressed"]
+[connection signal="pressed" from="Medium" to="." method="_on_medium_pressed"]
+[connection signal="pressed" from="Large" to="." method="_on_large_pressed"]
+[connection signal="pressed" from="FullScreen" to="." method="_on_full_screen_pressed"]

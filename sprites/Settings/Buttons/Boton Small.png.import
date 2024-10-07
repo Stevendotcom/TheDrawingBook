@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxuwa4uxyflgx"
-path="res://.godot/imported/Boton_Expandir.png-fd9e1949517e21dedd33617eb3bce55d.ctex"
+uid="uid://ort5odu2yb8j"
+path="res://.godot/imported/Boton Small.png-f43affd002851cdcf0c39463b4ed4b35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Settings/Buttons/Boton_Expandir.png"
-dest_files=["res://.godot/imported/Boton_Expandir.png-fd9e1949517e21dedd33617eb3bce55d.ctex"]
+source_file="res://sprites/Settings/Buttons/Boton Small.png"
+dest_files=["res://.godot/imported/Boton Small.png-f43affd002851cdcf0c39463b4ed4b35.ctex"]
 
 [params]
 

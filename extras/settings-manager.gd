@@ -41,7 +41,7 @@ func update_settings() -> void:
 	if fullscreen:
 		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
 	else:
-		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_MAXIMIZED)
+		DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_WINDOWED)
 	
 	#This doesn't work. The lines above this do
 	#ProjectSettings.set_setting(
