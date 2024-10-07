@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cqbq38vlqu64n" path="res://sprites/Settings/Buttons/Boton Large.png" id="7_1u16w"]
 [ext_resource type="Texture2D" uid="uid://clfb6g0m1ip75" path="res://sprites/Settings/Buttons/Boton Full Screen.png" id="8_lyun1"]
 [ext_resource type="Texture2D" uid="uid://cxlkpbl423w1e" path="res://sprites/Settings/Buttons/Bottom_BackV2_Pause_Menu.png" id="9_5ecoy"]
-[ext_resource type="Texture2D" uid="uid://omckh80tug1c" path="res://sprites/Settings/Buttons/Bottom_Back_Pause_Menu.png" id="9_fe8a0"]
+[ext_resource type="Texture2D" uid="uid://6tmx0giq88o1" path="res://sprites/Settings/Buttons/Bottom_Back_Pause_Menu.png" id="9_fe8a0"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -67,10 +67,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Small" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.300438
-anchor_top = 0.548037
-anchor_right = 0.343438
-anchor_bottom = 0.628037
+anchor_left = 0.299917
+anchor_top = 0.554519
+anchor_right = 0.342917
+anchor_bottom = 0.634519
 offset_left = -0.840027
 offset_top = 0.119995
 offset_right = 42.6
@@ -82,14 +82,14 @@ metadata/_edit_use_anchors_ = true
 [node name="Medium" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.391292
-anchor_top = 0.569889
-anchor_right = 0.449292
-anchor_bottom = 0.678889
-offset_left = 0.719971
-offset_top = 0.52002
-offset_right = 48.3599
-offset_bottom = 51.8
+anchor_left = 0.394604
+anchor_top = 0.566296
+anchor_right = 0.451604
+anchor_bottom = 0.675296
+offset_left = -0.639404
+offset_top = 0.400085
+offset_right = 48.9205
+offset_bottom = 51.6801
 scale = Vector2(0.695, 0.695)
 texture_normal = ExtResource("6_pi6hi")
 ignore_texture_size = true
@@ -98,10 +98,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Large" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.510792
-anchor_top = 0.563444
-anchor_right = 0.5805
-anchor_bottom = 0.684704
+anchor_left = 0.508708
+anchor_top = 0.56437
+anchor_right = 0.578417
+anchor_bottom = 0.68563
 offset_left = 0.279907
 offset_top = -0.519958
 offset_right = 16.4399
@@ -113,40 +113,40 @@ metadata/_edit_use_anchors_ = true
 [node name="FullScreen" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.633625
-anchor_top = 0.562482
-anchor_right = 0.714625
-anchor_bottom = 0.716482
+anchor_left = 0.635188
+anchor_top = 0.565259
+anchor_right = 0.712542
+anchor_bottom = 0.711852
 offset_left = -0.560059
 offset_top = 0.519958
 offset_right = -13.0801
 offset_bottom = -13.8
-scale = Vector2(1.09, 1.09)
 texture_normal = ExtResource("8_lyun1")
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_direction = 3
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.000729163
-anchor_right = 0.000729163
-anchor_bottom = 0.211
-offset_left = -134.4
-offset_right = 369.6
-offset_bottom = 82.12
-scale = Vector2(0.735, 0.735)
-metadata/_edit_use_anchors_ = true
-
-[node name="Back" type="TextureButton" parent="HBoxContainer"]
+[node name="Back" type="TextureButton" parent="."]
 layout_mode = 2
+anchor_left = 0.847
+anchor_right = 1.0
+anchor_bottom = 0.195
+offset_left = 0.76001
+offset_right = 137.0
+offset_bottom = 99.4
+scale = Vector2(0.68, 0.68)
 texture_normal = ExtResource("9_fe8a0")
 texture_hover = ExtResource("9_5ecoy")
-metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="mouse_entered" from="Small" to="." method="_on_small_mouse_entered"]
+[connection signal="mouse_exited" from="Small" to="." method="_on_small_mouse_exited"]
 [connection signal="pressed" from="Small" to="." method="_on_small_pressed"]
+[connection signal="mouse_entered" from="Medium" to="." method="_on_medium_mouse_entered"]
+[connection signal="mouse_exited" from="Medium" to="." method="_on_medium_mouse_exited"]
 [connection signal="pressed" from="Medium" to="." method="_on_medium_pressed"]
+[connection signal="mouse_entered" from="Large" to="." method="_on_large_mouse_entered"]
+[connection signal="mouse_exited" from="Large" to="." method="_on_large_mouse_exited"]
 [connection signal="pressed" from="Large" to="." method="_on_large_pressed"]
+[connection signal="mouse_entered" from="FullScreen" to="." method="_on_full_screen_mouse_entered"]
+[connection signal="mouse_exited" from="FullScreen" to="." method="_on_full_screen_mouse_exited"]
 [connection signal="pressed" from="FullScreen" to="." method="_on_full_screen_pressed"]
-[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
