@@ -62,18 +62,21 @@ layout_mode = 2
 theme_override_constants/separation = 400
 
 [node name="options" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("2_to6iq")
 
 [node name="continue" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("4_cf5nw")
 
 [node name="exit" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+process_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

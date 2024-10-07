@@ -8,6 +8,8 @@ func _on_texture_button_button_up() -> void:
 
 func _on_continue_button_up() -> void:
 	self.visible = false
+	get_tree().paused = false
+
 
 
 func _on_exit_button_up() -> void:

@@ -77,6 +77,7 @@ texture = ExtResource("4_56ual")
 expand_mode = 1
 
 [node name="Small" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.299917
@@ -93,6 +94,7 @@ scale = Vector2(0.66, 0.66)
 texture_normal = ExtResource("5_3psfq")
 
 [node name="Medium" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.394604
@@ -110,6 +112,7 @@ texture_normal = ExtResource("6_pi6hi")
 ignore_texture_size = true
 
 [node name="Large" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.508708
@@ -126,6 +129,7 @@ scale = Vector2(0.895, 0.895)
 texture_normal = ExtResource("7_1u16w")
 
 [node name="FullScreen" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.635188
@@ -141,6 +145,7 @@ grow_vertical = 2
 texture_normal = ExtResource("8_lyun1")
 
 [node name="Back" type="TextureButton" parent="."]
+process_mode = 3
 layout_mode = 2
 anchor_left = 0.847
 anchor_right = 1.0

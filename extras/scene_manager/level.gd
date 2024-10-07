@@ -78,6 +78,8 @@ func _disconnect_from_triggers() -> void:
 
 func _on_pause_button_up() -> void:
 	$PauseMenu.visible = true
+	get_tree().paused = true
+
 
 func _bought(base: int, price: int) -> void:
 	#probably a bad place to put it, but if there is no bottons there is no problem

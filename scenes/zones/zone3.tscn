@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://efhqdcdes37t"]
+[gd_scene load_steps=11 format=3 uid="uid://efhqdcdes37t"]
 
 [ext_resource type="Script" path="res://extras/scene_manager/level.gd" id="1_cmiqf"]
 [ext_resource type="Texture2D" uid="uid://b72kbscy4occ7" path="res://resources/sprites/Zone3/background.png" id="2_scbd2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://bnok4x7uk7f8y" path="res://resources/ink_text.tres" id="5_d6mtt"]
 [ext_resource type="Texture2D" uid="uid://cop1pk1wfy82t" path="res://resources/sprites/UI/Boton Pausa.png" id="5_u7ol5"]
 [ext_resource type="Texture2D" uid="uid://bimvcxwnb5lr6" path="res://resources/Flecha.png" id="7_tice5"]
+[ext_resource type="PackedScene" uid="uid://voppxgd86nb1" path="res://scenes/pause_menu.tscn" id="9_e6knp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_le6so"]
 size = Vector2(1607, 824)
@@ -125,5 +126,10 @@ entry_direction = 2
 transition_type = "wipe"
 path_to_new_scene = "res://scenes/zones/zone2.tscn"
 
+[node name="PauseMenu" parent="." instance=ExtResource("9_e6knp")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_up" from="Pause" to="." method="_on_pause_button_up"]
 [connection signal="button_up" from="Button" to="Button" method="_on_left_click"]
 [connection signal="button_up" from="Button2" to="Button2" method="_on_left_click"]
