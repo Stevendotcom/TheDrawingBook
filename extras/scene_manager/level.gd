@@ -75,7 +75,7 @@ func _bought(base: int) -> void:
 		deduct_ink(1)
 		var monster: Node = EntityManager.new_monster(self)
 		monster.find_child("MonsterSprite").texture = TextureManager.get_corresponding_texture(base, 1,1)
-		monster.set_up()
+		monster.set_up(base, 1, 1)
 
 func _get_ink_rate(creature: Node) -> float:
 	# Base ink calculation

@@ -33,7 +33,10 @@ func _process(delta) -> void:
 	move(delta)
 	drag(delta)
 
-func set_up():
+func set_up(base: int, level: int, evolution: int):
+	self.level = level
+	self.base = base
+	self.evolution = evolution
 	sprite.scale = Vector2(0.2,0.2)
 	sprite_size = sprite.texture.get_size() * sprite.scale
 
